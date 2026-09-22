@@ -47,13 +47,40 @@
       color: inherit;
     }
 
+    button {
+      font: inherit;
+    }
+
     .topbar {
+      position: relative;
       background: var(--teal-dark);
       color: white;
-      padding: 10px 20px;
+      padding: 11px 20px;
       font-size: 14px;
       text-align: center;
       letter-spacing: 0.02em;
+    }
+
+    .accessibility-toggle {
+      position: absolute;
+      top: 7px;
+      right: 16px;
+      min-height: 34px;
+      padding: 4px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 8px;
+      background: white;
+      color: var(--teal-dark);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .accessibility-toggle:hover,
+    .accessibility-toggle:focus-visible {
+      background: #ffe69d;
+      outline: 3px solid rgba(255, 230, 157, 0.7);
+      outline-offset: 2px;
     }
 
     .hero {
@@ -132,8 +159,11 @@
       font-weight: bold;
     }
 
-    .quick-nav a:hover {
+    .quick-nav a:hover,
+    .quick-nav a:focus-visible {
       background: #ffe69d;
+      outline: 3px solid rgba(255, 230, 157, 0.7);
+      outline-offset: 2px;
     }
 
     main {
@@ -179,7 +209,7 @@
       display: grid;
       grid-template-columns: 110px 1fr;
       gap: 24px;
-      align-items: center;
+      align-items: start;
       padding: 28px;
       border: 0;
       background: linear-gradient(135deg, rgba(255, 243, 207, 0.98), rgba(255, 255, 255, 0.98));
@@ -218,6 +248,55 @@
       margin-top: 10px !important;
       color: var(--muted);
       font-size: 15px;
+    }
+
+    .weather-details {
+      white-space: pre-line;
+    }
+
+    .official-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .official-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 12px 17px;
+      border-radius: 12px;
+      background: var(--teal-dark);
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .official-button:hover,
+    .official-button:focus-visible {
+      background: var(--teal);
+      transform: translateY(-1px);
+      outline: 3px solid rgba(15, 102, 115, 0.25);
+      outline-offset: 3px;
+    }
+
+    .official-button.air {
+      background: #3d6f47;
+    }
+
+    .official-button.air:hover,
+    .official-button.air:focus-visible {
+      background: #2d5a36;
+    }
+
+    .official-note {
+      margin-top: 14px !important;
+      color: #5d6051;
+      font-size: 14px;
     }
 
     .steps {
@@ -483,6 +562,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      min-height: 46px;
       padding: 11px 16px;
       border-radius: 11px;
       background: var(--purple);
@@ -491,9 +571,12 @@
       font-weight: bold;
     }
 
-    .video-button:hover {
+    .video-button:hover,
+    .video-button:focus-visible {
       background: #4e3d6c;
       transform: translateY(-1px);
+      outline: 3px solid rgba(101, 82, 140, 0.25);
+      outline-offset: 3px;
     }
 
     .notice {
@@ -520,6 +603,17 @@
       padding-left: 22px;
     }
 
+    .source-box li {
+      margin: 7px 0;
+    }
+
+    .source-box a {
+      color: #0c5b72;
+      font-weight: bold;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 2px;
+    }
+
     footer {
       margin-top: 10px;
       padding: 34px 20px;
@@ -529,9 +623,47 @@
       font-size: 14px;
     }
 
+    body.large-text {
+      font-size: 22px;
+      line-height: 1.9;
+    }
+
+    body.large-text h1 {
+      font-size: clamp(46px, 7vw, 74px);
+    }
+
+    body.large-text h2 {
+      font-size: clamp(34px, 5vw, 45px);
+    }
+
+    body.large-text .quick-nav a,
+    body.large-text .official-button,
+    body.large-text .video-button {
+      min-height: 56px;
+      padding: 14px 19px;
+      font-size: 19px;
+    }
+
+    body.large-text .place-card p,
+    body.large-text .step p,
+    body.large-text .health-grid li,
+    body.large-text .video-card p {
+      font-size: 18px;
+    }
+
     @media (max-width: 760px) {
       body {
         font-size: 17px;
+      }
+
+      .topbar {
+        padding: 12px 108px 12px 12px;
+        text-align: left;
+      }
+
+      .accessibility-toggle {
+        right: 12px;
+        top: 9px;
       }
 
       .hero {
@@ -574,6 +706,16 @@
         grid-template-columns: 1fr;
       }
 
+      .official-links {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .official-button {
+        width: 100%;
+        font-size: 18px;
+      }
+
       .video-zone {
         padding: 20px;
       }
@@ -582,16 +724,28 @@
 </head>
 
 <body>
-  <div class="topbar">🌼 面向北京西城社区的老年友好活动信息项目</div>
+  <div class="topbar">
+    🌼 面向北京西城社区的老年友好活动信息项目
+    <button class="accessibility-toggle" id="text-toggle" type="button" aria-pressed="false">
+      Aa 大字模式
+    </button>
+  </div>
 
   <header class="hero">
     <div class="hero-inner">
-      <div class="brand"><span class="brand-icon">🕺</span>西城乐舞指南 · 学生社区项目</div>
-      <h1>跳得开心，<br>也跳得更安心。</h1>
-      <p>为老年人和家属提供更清楚的活动地点、天气与空气质量提示、身体情况建议和广场舞教学资源。</p>
+      <div class="brand">
+        <span class="brand-icon">🕺</span>
+        西城乐舞指南 · 学生社区项目
+      </div>
 
-      <nav class="quick-nav">
-        <a href="#today">今日提示</a>
+      <h1>跳得开心，<br>也跳得更安心。</h1>
+
+      <p>
+        为老年人和家属提供更清楚的活动地点、天气与空气情况参考、身体情况建议和广场舞教学资源。
+      </p>
+
+      <nav class="quick-nav" aria-label="页面导航">
+        <a href="#today">活动参考</a>
         <a href="#places">活动地点</a>
         <a href="#health">健康建议</a>
         <a href="#videos">教学视频</a>
@@ -602,28 +756,43 @@
   <main>
     <section id="today">
       <div class="section-header">
-        <h2>今天的户外活动提示</h2>
+        <h2>户外活动参考提示</h2>
         <p class="section-subtitle">参考区域：北京西城区附近</p>
       </div>
 
       <div class="status-card card">
-        <div class="status-icon" id="weather-icon">⏳</div>
+        <div class="status-icon" id="weather-icon" aria-hidden="true">⏳</div>
 
         <div>
-          <div class="eyebrow">北京西城区附近 · 自动更新</div>
-          <h3 id="weather-status">正在读取天气和空气质量……</h3>
+          <div class="eyebrow">北京西城区附近 · 自动参考信息</div>
+          <h3 id="weather-status" aria-live="polite">正在读取天气信息……</h3>
 
-          <p id="weather-advice">
-            请等待几秒钟。如果数据没有显示，请刷新网页。
+          <p id="weather-advice" aria-live="polite">
+            请等待几秒钟。出门前也建议核对官方天气与空气质量信息。
           </p>
 
-          <p class="mini-note" id="weather-details">
+          <p class="mini-note weather-details" id="weather-details" aria-live="polite">
             数据加载中……
           </p>
 
-          <p class="mini-note">
-            数据来源：Open-Meteo Weather API 与 Air Quality API。
-            空气质量为模型参考；US AQI 不等于中国 AQI，也不是北京官方站点实测值。
+          <div class="official-links">
+            <a class="official-button"
+               href="https://www.weather.com.cn/weather/101010100.shtml"
+               target="_blank"
+               rel="noopener noreferrer">
+              ☁️ 查看北京官方天气预报
+            </a>
+
+            <a class="official-button air"
+               href="https://air.cnemc.cn:18007/?zbb=true"
+               target="_blank"
+               rel="noopener noreferrer">
+              🌿 查看北京官方空气质量
+            </a>
+          </div>
+
+          <p class="official-note">
+            页面自动信息仅供活动参考。出门前请以官方天气、空气质量和现场管理提示为准。
           </p>
         </div>
       </div>
@@ -656,7 +825,8 @@
       </div>
 
       <div class="info-strip">
-        <strong>小提醒：</strong>园区面积不等于可以跳舞的空地面积。选择地点时，还应关注照明、人流、座椅、厕所、地面平整度和雨雪天防滑情况。
+        <strong>小提醒：</strong>
+        园区面积不等于可以跳舞的空地面积。选择地点时，还应关注照明、人流、座椅、厕所、地面平整度和雨雪天防滑情况。
       </div>
 
       <div class="place-grid">
@@ -668,7 +838,7 @@
           <p><span class="label">位置：</span>西城区西直门外大街 135 号附近</p>
           <p><span class="label">公开面积参考：</span><span class="fact">整体园区约 13.2 万平方米</span></p>
           <p class="small-text">这不是广场可跳舞面积。</p>
-          <p><span class="label">开放时间：</span><span class="fact">24 小时开放</span></p>
+          <p><span class="label">开放时间：</span><span class="fact">请以现场公告为准</span></p>
           <p><span class="label">活动时注意：</span>如遇展览、安保或临时管理安排，请以现场提示为准；观察地面、照明、人流和车流噪声。</p>
         </article>
 
@@ -679,7 +849,7 @@
           </div>
           <p><span class="label">位置：</span>海淀区白石桥附近、中关村南大街一带</p>
           <p><span class="label">园区面积：</span><span class="fact">约 45.73–47.35 公顷</span></p>
-          <p><span class="label">开放时间：</span>通常 6:00 开园；旺季约至 22:00，淡季约至 21:00–21:30。</p>
+          <p><span class="label">开放时间：</span>通常 6:00 开园；具体闭园时间请以当天公告为准。</p>
           <p><span class="label">门票：</span><span class="fact">免费</span></p>
           <p><span class="label">活动时注意：</span>园区水面较多，选择硬质、平整、照明较好的区域，避开临水边缘与湿滑落叶路段。</p>
         </article>
@@ -691,8 +861,8 @@
           </div>
           <p><span class="label">位置：</span>西城区月坛北街甲 6 号</p>
           <p><span class="label">园区面积：</span><span class="fact">约 8.26 公顷</span></p>
-          <p><span class="label">开放时间：</span>冬令时通常 6:00–21:00；夏令时通常 6:00–21:30。</p>
-          <p><span class="label">活动时注意：</span>适合实地观察入口距离、座椅、厕所、照明和硬质活动空间；请以当天公告为准。</p>
+          <p><span class="label">开放时间：</span>请以季节安排和当天公告为准。</p>
+          <p><span class="label">活动时注意：</span>建议实地观察入口距离、座椅、厕所、照明和硬质活动空间；请以当天公告为准。</p>
         </article>
 
         <article class="place-card">
@@ -701,8 +871,8 @@
             <h3>动物园北门广场</h3>
           </div>
           <p><span class="label">位置：</span>北京动物园北门周边，西直门外大街一带</p>
-          <p><span class="label">可跳舞面积：</span><span class="fact">约 500 平方米</span></p>
-          <p><span class="label">开放时间参考：</span>动物园园区旺季通常 7:30–19:00、淡季通常 7:30–18:00；北门外广场不等同于园区开放区域。</p>
+          <p><span class="label">活动空间：</span><span class="fact">请以现场可用空间为准</span></p>
+          <p><span class="label">开放时间参考：</span>北门外广场不等同于动物园园区开放区域，请以现场管理规定为准。</p>
           <p><span class="label">活动时注意：</span>道路与人流较多；注意晚间照明、交通噪声、通行空间和现场管理要求。</p>
         </article>
 
@@ -713,7 +883,7 @@
           </div>
           <p><span class="label">位置：</span>西城区受壁街周边</p>
           <p><span class="label">面积：</span><span class="fact">约 1.25 公顷</span></p>
-          <p><span class="label">开放时间：</span><span class="fact">24 小时开放</span></p>
+          <p><span class="label">开放时间：</span><span class="fact">请以现场标牌为准</span></p>
           <p><span class="label">活动时注意：</span>重点观察平整硬地、夜间照明、座椅、无障碍坡道，以及雨雪天积水与防滑情况。</p>
         </article>
       </div>
@@ -742,7 +912,9 @@
       </div>
 
       <div class="video-zone">
-        <p>以下视频由原发布者上传至哔哩哔哩。建议先做热身，从低强度动作和动作分解开始；练习中可以随时暂停、喝水或休息。</p>
+        <p>
+          以下视频由原发布者上传至哔哩哔哩。建议先做热身，从低强度动作和动作分解开始；练习中可以随时暂停、喝水或休息。
+        </p>
 
         <div class="video-grid">
           <article class="video-card">
@@ -751,7 +923,9 @@
               <h3>广场舞基本步教学</h3>
             </div>
             <p>适合零基础学习基本步和跟练节奏。</p>
-            <a class="video-button" href="https://www.bilibili.com/video/BV18gT5ztECn/" target="_blank" rel="noopener noreferrer">▶ 打开教学视频</a>
+            <a class="video-button" href="https://www.bilibili.com/video/BV18gT5ztECn/" target="_blank" rel="noopener noreferrer">
+              ▶ 打开教学视频
+            </a>
           </article>
 
           <article class="video-card">
@@ -760,7 +934,9 @@
               <h3>1 小时广场舞跟练</h3>
             </div>
             <p>适合有一定基础的人进行较长时间跟练；请自主安排中途休息。</p>
-            <a class="video-button" href="https://www.bilibili.com/video/BV1fi4y137kn/" target="_blank" rel="noopener noreferrer">▶ 打开教学视频</a>
+            <a class="video-button" href="https://www.bilibili.com/video/BV1fi4y137kn/" target="_blank" rel="noopener noreferrer">
+              ▶ 打开教学视频
+            </a>
           </article>
 
           <article class="video-card">
@@ -769,7 +945,9 @@
               <h3>《一条大河》零基础分解</h3>
             </div>
             <p>老歌广场舞，包含较适合初学者的动作分解提示。</p>
-            <a class="video-button" href="https://www.bilibili.com/video/BV14SL26JE8V/" target="_blank" rel="noopener noreferrer">▶ 打开教学视频</a>
+            <a class="video-button" href="https://www.bilibili.com/video/BV14SL26JE8V/" target="_blank" rel="noopener noreferrer">
+              ▶ 打开教学视频
+            </a>
           </article>
 
           <article class="video-card">
@@ -778,11 +956,15 @@
               <h3>《鸟儿摇》32 步教学</h3>
             </div>
             <p>有正面和背面动作示范；膝盖不适者可减少跳跃和快速转向。</p>
-            <a class="video-button" href="https://www.bilibili.com/video/BV1vouvzeEES/" target="_blank" rel="noopener noreferrer">▶ 打开教学视频</a>
+            <a class="video-button" href="https://www.bilibili.com/video/BV1vouvzeEES/" target="_blank" rel="noopener noreferrer">
+              ▶ 打开教学视频
+            </a>
           </article>
         </div>
 
-        <p class="small-text">提示：本网站仅链接至第三方公开视频，不拥有视频版权。视频内容由原发布者负责；请根据个人身体状况调整动作，不适时停止。</p>
+        <p class="small-text">
+          提示：本网站仅链接至第三方公开视频，不拥有视频版权。视频内容由原发布者负责；请根据个人身体状况调整动作，不适时停止。
+        </p>
       </div>
     </section>
 
@@ -792,8 +974,13 @@
       </div>
 
       <div class="notice">
-        <p><strong>这是一个正在开发中的学生项目。</strong>天气与空气质量数据由 Open-Meteo 自动读取，并在每次刷新网页时更新。</p>
-        <p>空气质量数据是模型参考，US AQI 不等于中国 AQI，也不是北京官方站点实测。网站提供一般信息，不替代医生建议、官方天气预报、官方空气质量提示或公园管理规定。</p>
+        <p>
+          <strong>这是一个正在开发中的学生项目。</strong>
+          页面会尝试自动读取天气与空气情况参考信息；网络、第三方服务或数据更新可能造成延迟、缺失或显示失败。
+        </p>
+        <p>
+          本网站提供一般活动信息，不替代医生建议、官方天气预报、官方空气质量提示或公园管理规定。出门前请以官方发布和现场情况为准。
+        </p>
       </div>
     </section>
 
@@ -804,7 +991,32 @@
 
       <div class="source-box">
         <ul>
-          <li>天气与空气质量：Open-Meteo Weather API 与 Air Quality API（模型参考数据）。</li>
+          <li>
+            官方天气：
+            <a href="https://www.weather.com.cn/weather/101010100.shtml" target="_blank" rel="noopener noreferrer">
+              中国天气网·北京天气预报
+            </a>
+            ，以及
+            <a href="http://weather.cma.cn/web/weather/54511.html" target="_blank" rel="noopener noreferrer">
+              中国气象局北京天气预报
+            </a>。
+          </li>
+
+          <li>
+            官方空气质量：
+            <a href="https://air.cnemc.cn:18007/?zbb=true" target="_blank" rel="noopener noreferrer">
+              中国环境监测总站·全国城市空气质量实时发布
+            </a>
+            ，以及
+            <a href="https://zx.bjmemc.com.cn/" target="_blank" rel="noopener noreferrer">
+              北京市生态环境监测中心
+            </a>。
+          </li>
+
+          <li>
+            页面自动参考数据：Open-Meteo Weather API 与 Air Quality API。自动空气情况数值为模型参考，不等同于中国官方 AQI 或北京官方站点实测发布。
+          </li>
+
           <li>紫竹院公园：北京市园林绿化局及相关公园介绍页面。</li>
           <li>月坛公园：北京市园林绿化局、西城区政府及北京旅游网公开信息。</li>
           <li>北京动物园：北京动物园官网公开开放时间。</li>
@@ -825,40 +1037,81 @@
     const TIMEZONE = "Asia/Shanghai";
 
     function getActivitySuggestion(usAqi, temperature, precipitation, windSpeed) {
-      if (
-        usAqi === null ||
-        temperature === null ||
-        precipitation === null ||
-        windSpeed === null
-      ) {
+      if (temperature === null || precipitation === null || windSpeed === null) {
         return {
-          title: "数据暂时不完整",
+          title: "天气信息暂时不完整",
           icon: "⚠️",
-          message: "暂时没有读到完整的天气或空气质量数据。请出门前查看官方天气和空气质量信息。"
+          message: "暂时无法获得完整天气参考。出门前请查看北京官方天气预报和空气质量信息。"
         };
       }
 
-      if (usAqi > 150 || temperature <= -5 || precipitation > 0.5 || windSpeed >= 30) {
+      if (usAqi !== null && usAqi > 150) {
         return {
-          title: "不适合户外跳舞",
+          title: "建议减少户外活动",
           icon: "🏠",
-          message: "模型参考数据提示污染、低温、降水或大风风险较高。建议改为室内拉伸、坐姿操或其他低强度活动。"
+          message: "自动空气情况参考值较高。建议优先选择室内拉伸、坐姿操或其他低强度活动，并核对官方空气质量信息。"
         };
       }
 
-      if (usAqi > 100 || temperature <= 5 || precipitation > 0 || windSpeed >= 20) {
+      if (temperature <= -5 || precipitation > 0.5 || windSpeed >= 30) {
+        return {
+          title: "不适合长时间户外活动",
+          icon: "🏠",
+          message: "低温、降水或大风风险较高。建议改为室内低强度活动，并注意保暖和防滑。"
+        };
+      }
+
+      if (
+        (usAqi !== null && usAqi > 100) ||
+        temperature <= 5 ||
+        precipitation > 0 ||
+        windSpeed >= 20
+      ) {
         return {
           title: "谨慎活动",
           icon: "🧥",
-          message: "建议缩短活动时间、降低强度、注意保暖和防滑；呼吸敏感或心脑血管风险较高的老人优先选择室内活动。"
+          message: "建议缩短活动时间、降低强度、注意保暖和防滑；呼吸敏感或心脑血管风险较高者优先室内活动。"
         };
       }
 
       return {
         title: "相对适合户外活动",
         icon: "🕺",
-        message: "模型参考数据提示空气质量和天气条件相对适合低至中等强度活动。请先热身，并随时根据身体感受休息。"
+        message: "自动天气参考显示条件相对适合低至中等强度活动。请先热身，并随时根据身体感受休息。"
       };
+    }
+
+    async function fetchJson(url, label) {
+      let response;
+
+      try {
+        response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Accept": "application/json"
+          }
+        });
+      } catch (networkError) {
+        throw new Error(label + "网络请求失败：" + networkError.message);
+      }
+
+      if (!response.ok) {
+        const body = await response.text().catch(() => "");
+        throw new Error(
+          label + "返回 HTTP " + response.status +
+          (body ? "：" + body.slice(0, 120) : "")
+        );
+      }
+
+      try {
+        return await response.json();
+      } catch (jsonError) {
+        throw new Error(label + "返回内容无法解析：" + jsonError.message);
+      }
+    }
+
+    function valueOrDash(value, unit = "") {
+      return value === null || value === undefined ? "--" : value + unit;
     }
 
     async function loadWeatherAndAir() {
@@ -872,61 +1125,116 @@
         "latitude=" + LATITUDE +
         "&longitude=" + LONGITUDE +
         "&current=temperature_2m,apparent_temperature,precipitation,wind_speed_10m" +
-        "&timezone=" + TIMEZONE;
+        "&timezone=" + encodeURIComponent(TIMEZONE);
 
       const airUrl =
         "https://air-quality-api.open-meteo.com/v1/air-quality?" +
         "latitude=" + LATITUDE +
         "&longitude=" + LONGITUDE +
         "&current=us_aqi,pm2_5,pm10" +
-        "&timezone=" + TIMEZONE;
+        "&timezone=" + encodeURIComponent(TIMEZONE);
+
+      const [weatherResult, airResult] = await Promise.allSettled([
+        fetchJson(weatherUrl, "天气数据"),
+        fetchJson(airUrl, "空气情况数据")
+      ]);
+
+      const weatherData =
+        weatherResult.status === "fulfilled" ? weatherResult.value : null;
+
+      const airData =
+        airResult.status === "fulfilled" ? airResult.value : null;
+
+      const weather = weatherData?.current ?? null;
+      const air = airData?.current ?? null;
+
+      if (!weather && !air) {
+        icon.textContent = "⚠️";
+        status.textContent = "自动参考信息暂时无法读取";
+        advice.textContent =
+          "请直接点击下方按钮，查看北京官方天气预报和官方空气质量信息。";
+
+        details.textContent =
+          "自动参考数据暂不可用；出门前请以官方发布和现场情况为准。";
+
+        console.error("天气接口结果：", weatherResult);
+        console.error("空气质量接口结果：", airResult);
+        return;
+      }
+
+      const temperature = weather?.temperature_2m ?? null;
+      const precipitation = weather?.precipitation ?? null;
+      const windSpeed = weather?.wind_speed_10m ?? null;
+      const usAqi = air?.us_aqi ?? null;
+
+      const suggestion = getActivitySuggestion(
+        usAqi,
+        temperature,
+        precipitation,
+        windSpeed
+      );
+
+      icon.textContent = suggestion.icon;
+      status.textContent = suggestion.title;
+      advice.textContent = suggestion.message;
+
+      const dataTime = weather?.time ?? air?.time ?? "未知";
+
+      let detailsText =
+        "自动参考时间：北京时间 " + dataTime + "\n" +
+        "气温：" + valueOrDash(temperature, " °C") + "　" +
+        "体感：" + valueOrDash(weather?.apparent_temperature, " °C") + "\n" +
+        "降水：" + valueOrDash(precipitation, " mm") + "　" +
+        "风速：" + valueOrDash(windSpeed, " km/h");
+
+      if (air) {
+        detailsText +=
+          "\n空气情况参考：PM2.5 " +
+          valueOrDash(air.pm2_5, " µg/m³") +
+          "　PM10 " +
+          valueOrDash(air.pm10, " µg/m³");
+      } else {
+        detailsText += "\n空气情况自动参考暂不可用，请查看下方官方空气质量链接。";
+      }
+
+      details.textContent = detailsText;
+
+      console.log("天气自动参考数据：", weatherData);
+      console.log("空气情况自动参考数据：", airData);
+    }
+
+    function setLargeText(enabled) {
+      const toggle = document.getElementById("text-toggle");
+
+      document.body.classList.toggle("large-text", enabled);
+      toggle.setAttribute("aria-pressed", String(enabled));
+      toggle.textContent = enabled ? "Aa 恢复字号" : "Aa 大字模式";
 
       try {
-        const [weatherResponse, airResponse] = await Promise.all([
-          fetch(weatherUrl),
-          fetch(airUrl)
-        ]);
-
-        if (!weatherResponse.ok || !airResponse.ok) {
-          throw new Error("数据服务暂时无法响应。");
-        }
-
-        const weatherData = await weatherResponse.json();
-        const airData = await airResponse.json();
-
-        const weather = weatherData.current;
-        const air = airData.current;
-
-        const suggestion = getActivitySuggestion(
-          air.us_aqi,
-          weather.temperature_2m,
-          weather.precipitation,
-          weather.wind_speed_10m
-        );
-
-        icon.textContent = suggestion.icon;
-        status.textContent = suggestion.title;
-        advice.textContent = suggestion.message;
-
-        details.innerHTML =
-          "数据时间：北京时间 " + (weather.time || "未知") + "<br>" +
-          "气温：" + (weather.temperature_2m ?? "--") + " °C　" +
-          "体感：" + (weather.apparent_temperature ?? "--") + " °C<br>" +
-          "降水：" + (weather.precipitation ?? "--") + " mm　" +
-          "风速：" + (weather.wind_speed_10m ?? "--") + " km/h<br>" +
-          "US AQI（模型参考）：" + (air.us_aqi ?? "--") + "　" +
-          "PM2.5：" + (air.pm2_5 ?? "--") + " µg/m³　" +
-          "PM10：" + (air.pm10 ?? "--") + " µg/m³";
-
+        localStorage.setItem("largeText", enabled ? "true" : "false");
       } catch (error) {
-        icon.textContent = "⚠️";
-        status.textContent = "暂时无法读取数据";
-        advice.textContent =
-          "请检查网络后刷新网页；出门前也请查看官方天气和空气质量信息。";
-        details.textContent = "读取失败：" + error.message;
+        console.warn("无法保存字号设置：", error);
       }
     }
 
+    function initializeTextToggle() {
+      const toggle = document.getElementById("text-toggle");
+      let savedSetting = false;
+
+      try {
+        savedSetting = localStorage.getItem("largeText") === "true";
+      } catch (error) {
+        console.warn("无法读取字号设置：", error);
+      }
+
+      setLargeText(savedSetting);
+
+      toggle.addEventListener("click", () => {
+        setLargeText(!document.body.classList.contains("large-text"));
+      });
+    }
+
+    initializeTextToggle();
     loadWeatherAndAir();
   </script>
 </body>
