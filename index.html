@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>北京西城广场舞天气提示</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #f5f7f6;
+      color: #24312b;
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      line-height: 1.7;
+    }
+
+    header {
+      background: #226b4d;
+      color: white;
+      padding: 34px 20px 28px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+
+    header p {
+      margin: 10px auto 0;
+      max-width: 700px;
+      font-size: 17px;
+      opacity: 0.95;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    h2 {
+      margin-top: 38px;
+      color: #1d553d;
+      font-size: 25px;
+    }
+
+    h3 {
+      color: #1d553d;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 22px;
+      margin: 16px 0;
+      box-shadow: 0 2px 10px rgba(24, 55, 41, 0.10);
+    }
+
+    .today-card {
+      border-left: 8px solid #4d9b72;
+    }
+
+    .big-text {
+      margin: 8px 0;
+      color: #1d553d;
+      font-size: 27px;
+      font-weight: bold;
+    }
+
+    .small-text {
+      color: #58645e;
+      font-size: 15px;
+    }
+
+    .place-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+      gap: 16px;
+    }
+
+    .place-card {
+      background: white;
+      border-radius: 14px;
+      padding: 18px;
+      border-top: 5px solid #4d9b72;
+      box-shadow: 0 2px 8px rgba(24, 55, 41, 0.08);
+    }
+
+    .place-card h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .label {
+      color: #1d553d;
+      font-weight: bold;
+    }
+
+    .pending {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 8px;
+      background: #fff2cf;
+      color: #825400;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    ul {
+      padding-left: 24px;
+    }
+
+    .notice {
+      background: #fff8e8;
+      border: 1px solid #f0d48d;
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+
+    .source-box {
+      background: #edf6f0;
+      border-radius: 12px;
+      padding: 16px 18px;
+      font-size: 15px;
+      color: #3f5147;
+    }
+
+    footer {
+      padding: 20px;
+      background: #e7eee9;
+      color: #4a5b50;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 26px;
+      }
+
+      .big-text {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>北京西城广场舞天气提示</h1>
+    <p>一个为老年人设计的户外活动信息工具：结合地点、天气、空气质量和不同身体情况提供更清楚的提示。</p>
+  </header>
+
+  <main>
+    <h2>今天的户外活动提示</h2>
+
+    <section class="card today-card">
+      <div class="small-text">网站第一阶段</div>
+      <div class="big-text">天气与空气质量功能准备中</div>
+      <p>
+        本网站目前先整理附近活动地点的基本信息。后续将加入公开、文档化的天气和空气质量数据，
+        为每天傍晚的户外广场舞提供“适合、谨慎、不适合”的提示。
+      </p>
+      <p class="small-text">
+        在数据功能上线前，请在出门前查看当日官方天气预报和空气质量信息。
+      </p>
+    </section>
+
+    <h2>附近活动地点</h2>
+
+    <p>
+      下列信息用于帮助老人和家属初步比较活动地点。
+      <strong>“园区面积”不等于可跳舞空地面积。</strong>
+      广场舞实际可用空间、常见活动时间、照明和晚间人流需要通过实地观察或社区访谈补充。
+    </p>
+
+    <section class="place-grid">
+      <article class="place-card">
+        <h3>北京展览馆周边广场</h3>
+        <p><span class="label">位置：</span>西城区西直门外大街 135 号附近</p>
+        <p><span class="label">公开面积参考：</span>北京展览馆整体园区约 13.2 万平方米；这不是广场可跳舞面积。</p>
+        <p><span class="label">开放时间：</span><span class="pending">需根据当天展览和场馆管理安排确认</span></p>
+        <p><span class="label">适合关注：</span>地面是否平整、是否允许聚集活动、夜间照明、人流和车流噪声。</p>
+        <p class="small-text">建议：不要把展馆总面积写成“可跳舞面积”；先实地估计开放空地大小。</p>
+      </article>
+
+      <article class="place-card">
+        <h3>紫竹院公园</h3>
+        <p><span class="label">位置：</span>海淀区白石桥附近、中关村南大街一带</p>
+        <p><span class="label">园区面积：</span>约 45.73–47.35 公顷</p>
+        <p><span class="label">开放时间：</span>通常 6:00 开园；旺季约至 22:00，淡季约至 21:00–21:30。出发前请以公园当天公告为准。</p>
+        <p><span class="label">门票：</span>免费</p>
+        <p><span class="label">适合关注：</span>园区很大，水面约占三分之一；选择硬质、平整、照明较好的活动区域，避开临水边缘和湿滑落叶路段。</p>
+      </article>
+
+      <article class="place-card">
+        <h3>月坛公园</h3>
+        <p><span class="label">位置：</span>西城区月坛北街甲 6 号</p>
+        <p><span class="label">园区面积：</span>约 8.26 公顷</p>
+        <p><span class="label">开放时间：</span>冬令时通常 6:00–21:00（约 20:00 停止入园）；夏令时通常 6:00–21:30。请以当天公告为准。</p>
+        <p><span class="label">门票：</span>公开资料存在不同版本；出发前请查询公园当天规则。</p>
+        <p><span class="label">适合关注：</span>园区规模适中，适合把“入口距离、座椅、厕所、照明和硬质活动空间”作为实地观察重点。</p>
+      </article>
+
+      <article class="place-card">
+        <h3>动物园北门广场</h3>
+        <p><span class="label">位置：</span>北京动物园北门周边，西直门外大街一带</p>
+        <p><span class="label">开放时间参考：</span>北京动物园园区通常旺季 7:30–19:00、淡季 7:30–18:00；北门外广场不等同于动物园园区开放区域。</p>
+        <p><span class="label">可跳舞面积：</span><span class="pending">需实地测量或观察</span></p>
+        <p><span class="label">适合关注：</span>道路与人流较多；需查看晚间照明、交通噪声、路面平整度、是否影响出入口通行。</p>
+        <p class="small-text">建议：先确认北门外是否允许长期集体活动，并避免影响行人、车辆和园区出入口。</p>
+      </article>
+
+      <article class="place-card">
+        <h3>受壁街街角公园</h3>
+        <p><span class="label">位置：</span>西城区受壁街周边</p>
+        <p><span class="label">面积：</span><span class="pending">暂无可靠公开面积；建议现场估计活动硬地面积</span></p>
+        <p><span class="label">开放时间：</span><span class="pending">需根据公园现场标牌、社区管理规则确认</span></p>
+        <p><span class="label">适合关注：</span>作为街角小微绿地，重点看是否有平整硬地、夜间照明、座椅、无障碍坡道、雨雪天积水与防滑情况。</p>
+        <p class="small-text">建议：这里最适合做“社区实地观察卡”，不要在没有来源时填写具体面积或固定跳舞时间。</p>
+      </article>
+    </section>
+
+    <h2>不同人群的小建议</h2>
+
+    <section class="card">
+      <ul>
+        <li><strong>膝盖不舒服：</strong>选择平整、防滑的地面；避免跳跃、急转和过长时间站立；优先选择有座椅、方便中途休息的地点。</li>
+        <li><strong>呼吸敏感或有哮喘：</strong>空气质量较差、风大或天气转凉时优先选择室内轻度活动；遵循个人已有医生建议。</li>
+        <li><strong>心脑血管风险较高：</strong>低温、大风、空气污染或身体不适时避免高强度户外活动；不要空腹或刚吃饱就进行高强度跳舞。</li>
+        <li><strong>所有参与者：</strong>先热身，穿防滑运动鞋，携带饮水和常用物品；感觉胸闷、头晕、气喘或膝痛加重时及时停止并休息。</li>
+      </ul>
+    </section>
+
+    <h2>下一步：怎么补充地点信息</h2>
+
+    <section class="card">
+      <p>每次去一个地点时，只需要用手机记下或拍下下面六项：</p>
+      <ul>
+        <li>大概有多大一块平整硬地可用于活动：小于一个羽毛球场、约 1–2 个羽毛球场、还是更大。</li>
+        <li>晚上 18:00、19:00、20:00 时是否有足够照明。</li>
+        <li>常见的广场舞开始/结束时间，以及是否有固定舞队。</li>
+        <li>地面是否有台阶、坑洼、积水、落叶或湿滑风险。</li>
+        <li>附近是否有座椅、厕所、垃圾桶、饮水点和无障碍坡道。</li>
+        <li>是否靠近车流、施工、临水边缘，或容易打扰居民。</li>
+      </ul>
+    </section>
+
+    <h2>数据与使用说明</h2>
+
+    <section class="notice">
+      <p>
+        这是一个正在开发中的学生项目。未来将接入公开、文档化的天气和空气质量数据，
+        并明确标注数据来源、时间和局限性。
+      </p>
+      <p>
+        网站提供一般信息，不替代医生建议、官方天气预报、官方空气质量提示或公园管理规定。
+        有哮喘、慢性呼吸系统疾病、心脑血管疾病或其他健康问题的人，应优先遵循个人医疗建议。
+      </p>
+    </section>
+
+    <h2>信息来源</h2>
+
+    <section class="source-box">
+      <ul>
+        <li>紫竹院公园：北京市园林绿化局及相关公园介绍页面。</li>
+        <li>月坛公园：北京市园林绿化局、西城区政府及北京旅游网公开信息。</li>
+        <li>北京动物园：北京动物园官网公开开放时间。</li>
+        <li>北京展览馆：公开场馆介绍；页面中的面积为展馆整体参考，非广场活动面积。</li>
+        <li>受壁街街角公园：目前以实地观察与社区确认作为后续补充方式。</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    学生项目 · 北京西城老年人广场舞支持工具
+  </footer>
+</body>
+</html>
