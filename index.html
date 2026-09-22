@@ -14,9 +14,7 @@
       --cream: #fffaf0;
       --paper: #ffffff;
       --coral: #e96f51;
-      --coral-pale: #fff0ea;
       --gold: #efa82f;
-      --gold-pale: #fff5d8;
       --purple: #65528c;
       --purple-pale: #f0ebfa;
       --sky: #e4f2fb;
@@ -184,8 +182,7 @@
       align-items: center;
       padding: 28px;
       border: 0;
-      background:
-        linear-gradient(135deg, rgba(255, 243, 207, 0.98), rgba(255, 255, 255, 0.98));
+      background: linear-gradient(135deg, rgba(255, 243, 207, 0.98), rgba(255, 255, 255, 0.98));
       box-shadow: 0 14px 32px rgba(174, 118, 15, 0.16);
     }
 
@@ -431,9 +428,7 @@
       padding: 28px;
       border: 1px solid #dcd1ee;
       border-radius: 24px;
-      background:
-        radial-gradient(circle at 88% 8%, rgba(255, 220, 129, 0.36), transparent 24%),
-        var(--purple-pale);
+      background: radial-gradient(circle at 88% 8%, rgba(255, 220, 129, 0.36), transparent 24%), var(--purple-pale);
     }
 
     .video-zone > p {
@@ -612,12 +607,24 @@
       </div>
 
       <div class="status-card card">
-        <div class="status-icon">☀️</div>
+        <div class="status-icon" id="weather-icon">⏳</div>
+
         <div>
-          <div class="eyebrow">网站第一阶段</div>
-          <h3>天气与空气质量功能准备中</h3>
-          <p>目前先整理附近活动地点与老年人活动建议。后续将加入公开、文档化的天气和空气质量数据，为每天傍晚的户外广场舞提供“适合、谨慎、不适合”的提示。</p>
-          <p class="mini-note">出门前，请结合当日官方天气预报、空气质量信息和自己的身体状况决定是否活动。</p>
+          <div class="eyebrow">北京西城区附近 · 自动更新</div>
+          <h3 id="weather-status">正在读取天气和空气质量……</h3>
+
+          <p id="weather-advice">
+            请等待几秒钟。如果数据没有显示，请刷新网页。
+          </p>
+
+          <p class="mini-note" id="weather-details">
+            数据加载中……
+          </p>
+
+          <p class="mini-note">
+            数据来源：Open-Meteo Weather API 与 Air Quality API。
+            空气质量为模型参考；US AQI 不等于中国 AQI，也不是北京官方站点实测值。
+          </p>
         </div>
       </div>
 
@@ -720,10 +727,10 @@
 
       <div class="health-card card">
         <ul class="health-grid">
-          ><strong>🦵 膝盖不舒服：</strong>选择平整、防滑地面；避免跳跃、急转和过长时间站立；优先选择有座椅的地点。</li>
-          ><strong>🌬️ 呼吸敏感或有哮喘：</strong>空气质量较差、风大或天气转凉时优先室内轻度活动，并遵循已有医生建议。</li>
-          ><strong>🫀 心脑血管风险较高：</strong>低温、大风、空气污染或身体不适时避免高强度户外活动；不要空腹或刚吃饱就剧烈跳舞。</li>
-          ><strong>💧 所有参与者：</strong>先热身，穿防滑运动鞋，带水和常用物品；胸闷、头晕、气喘或疼痛加重时立即停止并休息。</li>
+          <li><strong>🦵 膝盖不舒服：</strong>选择平整、防滑地面；避免跳跃、急转和过长时间站立；优先选择有座椅的地点。</li>
+          <li><strong>🌬️ 呼吸敏感或有哮喘：</strong>空气质量较差、风大或天气转凉时优先室内轻度活动，并遵循已有医生建议。</li>
+          <li><strong>🫀 心脑血管风险较高：</strong>低温、大风、空气污染或身体不适时避免高强度户外活动；不要空腹或刚吃饱就剧烈跳舞。</li>
+          <li><strong>💧 所有参与者：</strong>先热身，穿防滑运动鞋，带水和常用物品；胸闷、头晕、气喘或疼痛加重时立即停止并休息。</li>
         </ul>
       </div>
     </section>
@@ -785,8 +792,8 @@
       </div>
 
       <div class="notice">
-        <p><strong>这是一个正在开发中的学生项目。</strong>未来将接入公开、文档化的天气和空气质量数据，并明确显示数据来源、更新时间和局限性。</p>
-        <p>本网站提供一般信息，不替代医生建议、官方天气预报、官方空气质量提示或公园管理规定。有哮喘、慢性呼吸系统疾病、心脑血管疾病或其他健康问题的人，应优先遵循个人医疗建议。</p>
+        <p><strong>这是一个正在开发中的学生项目。</strong>天气与空气质量数据由 Open-Meteo 自动读取，并在每次刷新网页时更新。</p>
+        <p>空气质量数据是模型参考，US AQI 不等于中国 AQI，也不是北京官方站点实测。网站提供一般信息，不替代医生建议、官方天气预报、官方空气质量提示或公园管理规定。</p>
       </div>
     </section>
 
@@ -797,11 +804,12 @@
 
       <div class="source-box">
         <ul>
-          >紫竹院公园：北京市园林绿化局及相关公园介绍页面。</li>
-          >月坛公园：北京市园林绿化局、西城区政府及北京旅游网公开信息。</li>
-          >北京动物园：北京动物园官网公开开放时间。</li>
-          >北京展览馆：公开场馆介绍；页面中的面积为展馆整体参考，不是广场活动面积。</li>
-          >受壁街街角公园：面积与开放时间为社区参考信息，建议以现场标牌与管理规定为准。</li>
+          <li>天气与空气质量：Open-Meteo Weather API 与 Air Quality API（模型参考数据）。</li>
+          <li>紫竹院公园：北京市园林绿化局及相关公园介绍页面。</li>
+          <li>月坛公园：北京市园林绿化局、西城区政府及北京旅游网公开信息。</li>
+          <li>北京动物园：北京动物园官网公开开放时间。</li>
+          <li>北京展览馆：公开场馆介绍；页面中的面积为展馆整体参考，不是广场活动面积。</li>
+          <li>受壁街街角公园：面积与开放时间为社区参考信息，建议以现场标牌与管理规定为准。</li>
         </ul>
       </div>
     </section>
@@ -810,5 +818,116 @@
   <footer>
     西城乐舞指南 · 北京西城老年人广场舞支持工具 · 学生社区项目
   </footer>
+
+  <script>
+    const LATITUDE = 39.91;
+    const LONGITUDE = 116.35;
+    const TIMEZONE = "Asia/Shanghai";
+
+    function getActivitySuggestion(usAqi, temperature, precipitation, windSpeed) {
+      if (
+        usAqi === null ||
+        temperature === null ||
+        precipitation === null ||
+        windSpeed === null
+      ) {
+        return {
+          title: "数据暂时不完整",
+          icon: "⚠️",
+          message: "暂时没有读到完整的天气或空气质量数据。请出门前查看官方天气和空气质量信息。"
+        };
+      }
+
+      if (usAqi > 150 || temperature <= -5 || precipitation > 0.5 || windSpeed >= 30) {
+        return {
+          title: "不适合户外跳舞",
+          icon: "🏠",
+          message: "模型参考数据提示污染、低温、降水或大风风险较高。建议改为室内拉伸、坐姿操或其他低强度活动。"
+        };
+      }
+
+      if (usAqi > 100 || temperature <= 5 || precipitation > 0 || windSpeed >= 20) {
+        return {
+          title: "谨慎活动",
+          icon: "🧥",
+          message: "建议缩短活动时间、降低强度、注意保暖和防滑；呼吸敏感或心脑血管风险较高的老人优先选择室内活动。"
+        };
+      }
+
+      return {
+        title: "相对适合户外活动",
+        icon: "🕺",
+        message: "模型参考数据提示空气质量和天气条件相对适合低至中等强度活动。请先热身，并随时根据身体感受休息。"
+      };
+    }
+
+    async function loadWeatherAndAir() {
+      const icon = document.getElementById("weather-icon");
+      const status = document.getElementById("weather-status");
+      const advice = document.getElementById("weather-advice");
+      const details = document.getElementById("weather-details");
+
+      const weatherUrl =
+        "https://api.open-meteo.com/v1/forecast?" +
+        "latitude=" + LATITUDE +
+        "&longitude=" + LONGITUDE +
+        "&current=temperature_2m,apparent_temperature,precipitation,wind_speed_10m" +
+        "&timezone=" + TIMEZONE;
+
+      const airUrl =
+        "https://air-quality-api.open-meteo.com/v1/air-quality?" +
+        "latitude=" + LATITUDE +
+        "&longitude=" + LONGITUDE +
+        "&current=us_aqi,pm2_5,pm10" +
+        "&timezone=" + TIMEZONE;
+
+      try {
+        const [weatherResponse, airResponse] = await Promise.all([
+          fetch(weatherUrl),
+          fetch(airUrl)
+        ]);
+
+        if (!weatherResponse.ok || !airResponse.ok) {
+          throw new Error("数据服务暂时无法响应。");
+        }
+
+        const weatherData = await weatherResponse.json();
+        const airData = await airResponse.json();
+
+        const weather = weatherData.current;
+        const air = airData.current;
+
+        const suggestion = getActivitySuggestion(
+          air.us_aqi,
+          weather.temperature_2m,
+          weather.precipitation,
+          weather.wind_speed_10m
+        );
+
+        icon.textContent = suggestion.icon;
+        status.textContent = suggestion.title;
+        advice.textContent = suggestion.message;
+
+        details.innerHTML =
+          "数据时间：北京时间 " + (weather.time || "未知") + "<br>" +
+          "气温：" + (weather.temperature_2m ?? "--") + " °C　" +
+          "体感：" + (weather.apparent_temperature ?? "--") + " °C<br>" +
+          "降水：" + (weather.precipitation ?? "--") + " mm　" +
+          "风速：" + (weather.wind_speed_10m ?? "--") + " km/h<br>" +
+          "US AQI（模型参考）：" + (air.us_aqi ?? "--") + "　" +
+          "PM2.5：" + (air.pm2_5 ?? "--") + " µg/m³　" +
+          "PM10：" + (air.pm10 ?? "--") + " µg/m³";
+
+      } catch (error) {
+        icon.textContent = "⚠️";
+        status.textContent = "暂时无法读取数据";
+        advice.textContent =
+          "请检查网络后刷新网页；出门前也请查看官方天气和空气质量信息。";
+        details.textContent = "读取失败：" + error.message;
+      }
+    }
+
+    loadWeatherAndAir();
+  </script>
 </body>
 </html>
