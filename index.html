@@ -91,7 +91,12 @@
       overflow: hidden;
       color: white;
       background:
-        linear-gradient(90deg, rgba(5, 55, 64, 0.92) 0%, rgba(8, 81, 88, 0.74) 48%, rgba(8, 74, 82, 0.20) 100%),
+        linear-gradient(
+          90deg,
+          rgba(5, 55, 64, 0.92) 0%,
+          rgba(8, 81, 88, 0.74) 48%,
+          rgba(8, 74, 82, 0.20) 100%
+        ),
         url("https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/ee29d7c3-a5bc-5403-986e-b26977c40514/40ba1727-a31c-5e9c-ad64-1e1760807810.jpg") center / cover;
     }
 
@@ -212,7 +217,11 @@
       align-items: start;
       padding: 28px;
       border: 0;
-      background: linear-gradient(135deg, rgba(255, 243, 207, 0.98), rgba(255, 255, 255, 0.98));
+      background: linear-gradient(
+        135deg,
+        rgba(255, 243, 207, 0.98),
+        rgba(255, 255, 255, 0.98)
+      );
       box-shadow: 0 14px 32px rgba(174, 118, 15, 0.16);
     }
 
@@ -297,6 +306,139 @@
       margin-top: 14px !important;
       color: #5d6051;
       font-size: 14px;
+    }
+
+    .daily-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .summary-card {
+      min-height: 170px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--paper);
+      box-shadow: 0 8px 22px rgba(20, 68, 76, 0.07);
+    }
+
+    .summary-card.clothing {
+      border-top: 7px solid #d77755;
+      background: linear-gradient(135deg, #fff4eb, white);
+    }
+
+    .summary-card.activity {
+      border-top: 7px solid #508860;
+      background: linear-gradient(135deg, #edf7ee, white);
+    }
+
+    .summary-card.today-data {
+      border-top: 7px solid var(--teal);
+      background: linear-gradient(135deg, #edfafa, white);
+    }
+
+    .summary-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 8px;
+      color: var(--teal-dark);
+      font-size: 21px;
+    }
+
+    .summary-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .summary-icon {
+      font-size: 26px;
+    }
+
+    .forecast-section {
+      margin-top: 25px;
+    }
+
+    .forecast-title {
+      margin: 0 0 13px;
+      color: var(--teal-dark);
+      font-size: 24px;
+    }
+
+    .forecast-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .forecast-card {
+      min-height: 265px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 21px;
+      background: var(--paper);
+      box-shadow: 0 8px 22px rgba(20, 68, 76, 0.07);
+    }
+
+    .forecast-card.today {
+      border: 2px solid #e7b950;
+      background: linear-gradient(135deg, #fff8df, #ffffff);
+    }
+
+    .forecast-day {
+      color: var(--teal-dark);
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .forecast-date {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .forecast-icon {
+      margin: 8px 0 4px;
+      font-size: 48px;
+      line-height: 1;
+    }
+
+    .forecast-condition {
+      min-height: 29px;
+      color: var(--teal-dark);
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .forecast-temp {
+      margin-top: 7px;
+      color: #9b3f2a;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .forecast-temp span {
+      color: #4d6f78;
+      font-size: 17px;
+      font-weight: normal;
+    }
+
+    .forecast-meta {
+      margin-top: 11px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .forecast-empty {
+      grid-column: 1 / -1;
+      padding: 20px;
+      border: 1px dashed #b8c6c8;
+      border-radius: 16px;
+      color: var(--muted);
+      background: #f8fbfb;
     }
 
     .steps {
@@ -503,11 +645,128 @@
       color: #ae4f37;
     }
 
+    /* 热身区 */
+    .warmup-zone {
+      padding: 28px;
+      border: 1px solid #f0d6b8;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 88% 8%, rgba(255, 218, 145, 0.35), transparent 23%),
+        #fff7ec;
+    }
+
+    .warmup-zone > p {
+      margin-top: 0;
+      color: #76553c;
+    }
+
+    .warmup-storyboard {
+      overflow: hidden;
+      margin: 20px 0 24px;
+      border: 1px solid #ead5bc;
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 8px 20px rgba(125, 83, 41, 0.08);
+    }
+
+    .warmup-storyboard img {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #fffaf0;
+    }
+
+    .warmup-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .warmup-card {
+      position: relative;
+      min-height: 225px;
+      padding: 18px;
+      overflow: hidden;
+      border: 1px solid #f0d6b8;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.94);
+    }
+
+    .warmup-card::after {
+      position: absolute;
+      right: 10px;
+      bottom: -22px;
+      color: rgba(233, 111, 81, 0.10);
+      font-size: 100px;
+      font-weight: bold;
+    }
+
+    .warmup-card:nth-child(1)::after {
+      content: "1";
+    }
+
+    .warmup-card:nth-child(2)::after {
+      content: "2";
+    }
+
+    .warmup-card:nth-child(3)::after {
+      content: "3";
+    }
+
+    .warmup-card:nth-child(4)::after {
+      content: "4";
+    }
+
+    .warmup-step-number {
+      display: grid;
+      place-items: center;
+      width: 35px;
+      height: 35px;
+      margin-bottom: 8px;
+      border-radius: 50%;
+      background: #f8d491;
+      color: #714300;
+      font-weight: bold;
+    }
+
+    .warmup-emoji {
+      margin: 4px 0 8px;
+      font-size: 45px;
+      line-height: 1;
+    }
+
+    .warmup-card h3 {
+      margin: 0 0 6px;
+      color: #8c4e27;
+      font-size: 20px;
+    }
+
+    .warmup-card p {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      color: #6d6259;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .warmup-safety-note {
+      margin: 20px 0 0;
+      padding: 15px 18px;
+      border-left: 6px solid var(--coral);
+      border-radius: 12px;
+      background: #fff0e9;
+      color: #744537;
+      font-size: 16px;
+    }
+
     .video-zone {
       padding: 28px;
       border: 1px solid #dcd1ee;
       border-radius: 24px;
-      background: radial-gradient(circle at 88% 8%, rgba(255, 220, 129, 0.36), transparent 24%), var(--purple-pale);
+      background:
+        radial-gradient(circle at 88% 8%, rgba(255, 220, 129, 0.36), transparent 24%),
+        var(--purple-pale);
     }
 
     .video-zone > p {
@@ -579,41 +838,6 @@
       outline-offset: 3px;
     }
 
-    .notice {
-      padding: 24px;
-      border: 1px solid #f2d999;
-      border-radius: 20px;
-      background: #fffaf0;
-    }
-
-    .notice p {
-      margin: 8px 0;
-    }
-
-    .source-box {
-      padding: 21px 24px;
-      border-radius: 18px;
-      background: var(--sky);
-      color: #365866;
-      font-size: 15px;
-    }
-
-    .source-box ul {
-      margin: 5px 0;
-      padding-left: 22px;
-    }
-
-    .source-box li {
-      margin: 7px 0;
-    }
-
-    .source-box a {
-      color: #0c5b72;
-      font-weight: bold;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 2px;
-    }
-
     footer {
       margin-top: 10px;
       padding: 34px 20px;
@@ -644,11 +868,21 @@
       font-size: 19px;
     }
 
+    body.large-text .summary-card p,
+    body.large-text .forecast-meta,
     body.large-text .place-card p,
     body.large-text .step p,
     body.large-text .health-grid li,
+    body.large-text .warmup-card p,
+    body.large-text .warmup-safety-note,
     body.large-text .video-card p {
       font-size: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .warmup-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 760px) {
@@ -699,9 +933,12 @@
         font-size: 38px;
       }
 
+      .daily-summary-grid,
+      .forecast-grid,
       .steps,
       .place-grid,
       .health-grid,
+      .warmup-grid,
       .video-grid {
         grid-template-columns: 1fr;
       }
@@ -716,8 +953,13 @@
         font-size: 18px;
       }
 
+      .warmup-zone,
       .video-zone {
         padding: 20px;
+      }
+
+      .warmup-storyboard {
+        border-radius: 16px;
       }
     }
   </style>
@@ -725,7 +967,7 @@
 
 <body>
   <div class="topbar">
-    🌼 面向北京西城社区的老年友好活动信息项目
+    🌼 北京西城老年友好活动信息指南
     <button class="accessibility-toggle" id="text-toggle" type="button" aria-pressed="false">
       Aa 大字模式
     </button>
@@ -735,19 +977,20 @@
     <div class="hero-inner">
       <div class="brand">
         <span class="brand-icon">🕺</span>
-        西城乐舞指南 · 学生社区项目
+        西城乐舞指南
       </div>
 
       <h1>跳得开心，<br>也跳得更安心。</h1>
 
       <p>
-        为老年人和家属提供更清楚的活动地点、天气与空气情况参考、身体情况建议和广场舞教学资源。
+        为老年人和家属提供更清楚的活动地点、天气与空气情况参考、穿衣提醒、身体情况建议和广场舞教学资源。
       </p>
 
       <nav class="quick-nav" aria-label="页面导航">
         <a href="#today">活动参考</a>
         <a href="#places">活动地点</a>
         <a href="#health">健康建议</a>
+        <a href="#warmup">热身动作</a>
         <a href="#videos">教学视频</a>
       </nav>
     </div>
@@ -756,7 +999,7 @@
   <main>
     <section id="today">
       <div class="section-header">
-        <h2>户外活动参考提示</h2>
+        <h2>天气与活动参考</h2>
         <p class="section-subtitle">参考区域：北京西城区附近</p>
       </div>
 
@@ -764,7 +1007,7 @@
         <div class="status-icon" id="weather-icon" aria-hidden="true">⏳</div>
 
         <div>
-          <div class="eyebrow">北京西城区附近 · 自动参考信息</div>
+          <div class="eyebrow">北京西城区附近 · 自动天气参考</div>
           <h3 id="weather-status" aria-live="polite">正在读取天气信息……</h3>
 
           <p id="weather-advice" aria-live="polite">
@@ -792,8 +1035,33 @@
           </div>
 
           <p class="official-note">
-            页面自动信息仅供活动参考。出门前请以官方天气、空气质量和现场管理提示为准。
+            自动天气与穿衣建议仅作活动参考；出门前请以官方发布、个人身体状况和现场情况为准。
           </p>
+        </div>
+      </div>
+
+      <div class="daily-summary-grid">
+        <article class="summary-card today-data">
+          <h3><span class="summary-icon">🌡️</span>今天概览</h3>
+          <p id="today-overview">正在读取今日气温、降水和风速……</p>
+        </article>
+
+        <article class="summary-card clothing">
+          <h3><span class="summary-icon">🧥</span>穿衣参考</h3>
+          <p id="clothing-advice">正在根据天气生成穿衣建议……</p>
+        </article>
+
+        <article class="summary-card activity">
+          <h3><span class="summary-icon">🕺</span>活动小建议</h3>
+          <p id="activity-advice">正在根据天气生成活动建议……</p>
+        </article>
+      </div>
+
+      <div class="forecast-section">
+        <h3 class="forecast-title">未来三天天气参考</h3>
+
+        <div class="forecast-grid" id="forecast-grid" aria-live="polite">
+          <div class="forecast-empty">正在读取未来三天天气预测……</div>
         </div>
       </div>
 
@@ -905,6 +1173,69 @@
       </div>
     </section>
 
+    <!-- 新增：热身动作 -->
+    <section id="warmup">
+      <div class="section-header">
+        <h2>活动前热身动作</h2>
+        <p class="section-subtitle">约 3–5 分钟 · 动作轻缓、量力而行</p>
+      </div>
+
+      <div class="warmup-zone">
+        <p>
+          跳舞、散步或做较长时间活动前，先用轻松的小动作让身体慢慢热起来。动作不需要做得很大；如有明显疼痛、头晕、胸闷或气喘，请立即停止并休息。
+        </p>
+
+        <!--
+          请将生成的热身图片上传到 GitHub 仓库根目录，文件名保持为：
+          warmup-storyboard.png
+
+          上传后，下方连环画会自动显示。
+        -->
+        <div class="warmup-storyboard">
+          <img
+            src="warmup-storyboard.png"
+            alt="四步热身动作连环画：原地慢走、肩部活动、扶椅活动脚踝、侧步摆臂。"
+            onerror="this.parentElement.style.display='none';"
+          >
+        </div>
+
+        <div class="warmup-grid">
+          <article class="warmup-card">
+            <div class="warmup-step-number">1</div>
+            <div class="warmup-emoji" aria-hidden="true">🚶</div>
+            <h3>原地慢走</h3>
+            <p>双脚轻轻抬起、原地慢走约 1 分钟。手臂自然摆动，不要着急抬得太高。</p>
+          </article>
+
+          <article class="warmup-card">
+            <div class="warmup-step-number">2</div>
+            <div class="warmup-emoji" aria-hidden="true">🙆</div>
+            <h3>肩颈轻轻活动</h3>
+            <p>轻轻转动肩膀、慢慢抬臂和放下。颈部只做小幅度活动，不要快速甩头。</p>
+          </article>
+
+          <article class="warmup-card">
+            <div class="warmup-step-number">3</div>
+            <div class="warmup-emoji" aria-hidden="true">🪑</div>
+            <h3>扶稳活动脚踝</h3>
+            <p>扶住牢固椅背或栏杆，轻轻抬脚、活动脚踝。站立不稳时请不要单脚久站。</p>
+          </article>
+
+          <article class="warmup-card">
+            <div class="warmup-step-number">4</div>
+            <div class="warmup-emoji" aria-hidden="true">↔️</div>
+            <h3>小幅侧步摆臂</h3>
+            <p>向左、向右各走小步，手臂自然轻摆。膝盖不适时缩小步幅，避免快速转身。</p>
+          </article>
+        </div>
+
+        <p class="warmup-safety-note">
+          <strong>安全提醒：</strong>
+          请穿防滑鞋，在平整地面活动。若近期有明显不适、刚受伤，或医生建议限制运动，请优先遵循医生建议。
+        </p>
+      </div>
+    </section>
+
     <section id="videos">
       <div class="section-header">
         <h2>广场舞教学小视频</h2>
@@ -923,7 +1254,10 @@
               <h3>广场舞基本步教学</h3>
             </div>
             <p>适合零基础学习基本步和跟练节奏。</p>
-            <a class="video-button" href="https://www.bilibili.com/video/BV18gT5ztECn/" target="_blank" rel="noopener noreferrer">
+            <a class="video-button"
+               href="https://www.bilibili.com/video/BV18gT5ztECn/"
+               target="_blank"
+               rel="noopener noreferrer">
               ▶ 打开教学视频
             </a>
           </article>
@@ -934,7 +1268,10 @@
               <h3>1 小时广场舞跟练</h3>
             </div>
             <p>适合有一定基础的人进行较长时间跟练；请自主安排中途休息。</p>
-            <a class="video-button" href="https://www.bilibili.com/video/BV1fi4y137kn/" target="_blank" rel="noopener noreferrer">
+            <a class="video-button"
+               href="https://www.bilibili.com/video/BV1fi4y137kn/"
+               target="_blank"
+               rel="noopener noreferrer">
               ▶ 打开教学视频
             </a>
           </article>
@@ -945,7 +1282,10 @@
               <h3>《一条大河》零基础分解</h3>
             </div>
             <p>老歌广场舞，包含较适合初学者的动作分解提示。</p>
-            <a class="video-button" href="https://www.bilibili.com/video/BV14SL26JE8V/" target="_blank" rel="noopener noreferrer">
+            <a class="video-button"
+               href="https://www.bilibili.com/video/BV14SL26JE8V/"
+               target="_blank"
+               rel="noopener noreferrer">
               ▶ 打开教学视频
             </a>
           </article>
@@ -956,7 +1296,10 @@
               <h3>《鸟儿摇》32 步教学</h3>
             </div>
             <p>有正面和背面动作示范；膝盖不适者可减少跳跃和快速转向。</p>
-            <a class="video-button" href="https://www.bilibili.com/video/BV1vouvzeEES/" target="_blank" rel="noopener noreferrer">
+            <a class="video-button"
+               href="https://www.bilibili.com/video/BV1vouvzeEES/"
+               target="_blank"
+               rel="noopener noreferrer">
               ▶ 打开教学视频
             </a>
           </article>
@@ -967,74 +1310,102 @@
         </p>
       </div>
     </section>
-
-    <section>
-      <div class="section-header">
-        <h2>数据与使用说明</h2>
-      </div>
-
-      <div class="notice">
-        <p>
-          <strong>这是一个正在开发中的学生项目。</strong>
-          页面会尝试自动读取天气与空气情况参考信息；网络、第三方服务或数据更新可能造成延迟、缺失或显示失败。
-        </p>
-        <p>
-          本网站提供一般活动信息，不替代医生建议、官方天气预报、官方空气质量提示或公园管理规定。出门前请以官方发布和现场情况为准。
-        </p>
-      </div>
-    </section>
-
-    <section>
-      <div class="section-header">
-        <h2>信息来源</h2>
-      </div>
-
-      <div class="source-box">
-        <ul>
-          <li>
-            官方天气：
-            <a href="https://www.weather.com.cn/weather/101010100.shtml" target="_blank" rel="noopener noreferrer">
-              中国天气网·北京天气预报
-            </a>
-            ，以及
-            <a href="http://weather.cma.cn/web/weather/54511.html" target="_blank" rel="noopener noreferrer">
-              中国气象局北京天气预报
-            </a>。
-          </li>
-
-          <li>
-            官方空气质量：
-            <a href="https://air.cnemc.cn:18007/?zbb=true" target="_blank" rel="noopener noreferrer">
-              中国环境监测总站·全国城市空气质量实时发布
-            </a>
-            ，以及
-            <a href="https://zx.bjmemc.com.cn/" target="_blank" rel="noopener noreferrer">
-              北京市生态环境监测中心
-            </a>。
-          </li>
-
-          <li>
-            页面自动参考数据：Open-Meteo Weather API 与 Air Quality API。自动空气情况数值为模型参考，不等同于中国官方 AQI 或北京官方站点实测发布。
-          </li>
-
-          <li>紫竹院公园：北京市园林绿化局及相关公园介绍页面。</li>
-          <li>月坛公园：北京市园林绿化局、西城区政府及北京旅游网公开信息。</li>
-          <li>北京动物园：北京动物园官网公开开放时间。</li>
-          <li>北京展览馆：公开场馆介绍；页面中的面积为展馆整体参考，不是广场活动面积。</li>
-          <li>受壁街街角公园：面积与开放时间为社区参考信息，建议以现场标牌与管理规定为准。</li>
-        </ul>
-      </div>
-    </section>
   </main>
 
   <footer>
-    西城乐舞指南 · 北京西城老年人广场舞支持工具 · 学生社区项目
+    西城乐舞指南 · 北京西城老年人广场舞支持工具
   </footer>
 
   <script>
     const LATITUDE = 39.91;
     const LONGITUDE = 116.35;
     const TIMEZONE = "Asia/Shanghai";
+
+    function getWeatherInfo(code) {
+      const weatherMap = {
+        0: { icon: "☀️", text: "晴" },
+        1: { icon: "🌤️", text: "大部晴朗" },
+        2: { icon: "⛅", text: "多云" },
+        3: { icon: "☁️", text: "阴" },
+        45: { icon: "🌫️", text: "有雾" },
+        48: { icon: "🌫️", text: "雾凇" },
+        51: { icon: "🌦️", text: "毛毛雨" },
+        53: { icon: "🌦️", text: "细雨" },
+        55: { icon: "🌧️", text: "较强细雨" },
+        56: { icon: "🌧️", text: "冻毛毛雨" },
+        57: { icon: "🌧️", text: "较强冻毛毛雨" },
+        61: { icon: "🌦️", text: "小雨" },
+        63: { icon: "🌧️", text: "中雨" },
+        65: { icon: "🌧️", text: "大雨" },
+        66: { icon: "🌧️", text: "冻雨" },
+        67: { icon: "🌧️", text: "强冻雨" },
+        71: { icon: "🌨️", text: "小雪" },
+        73: { icon: "🌨️", text: "中雪" },
+        75: { icon: "❄️", text: "大雪" },
+        77: { icon: "❄️", text: "雪粒" },
+        80: { icon: "🌦️", text: "阵雨" },
+        81: { icon: "🌧️", text: "较强阵雨" },
+        82: { icon: "⛈️", text: "强阵雨" },
+        85: { icon: "🌨️", text: "阵雪" },
+        86: { icon: "❄️", text: "强阵雪" },
+        95: { icon: "⛈️", text: "雷暴" },
+        96: { icon: "⛈️", text: "雷暴伴小冰雹" },
+        99: { icon: "⛈️", text: "雷暴伴强冰雹" }
+      };
+
+      return weatherMap[code] || {
+        icon: "🌤️",
+        text: "天气变化"
+      };
+    }
+
+    function getDayLabel(index, dateString) {
+      if (index === 0) return "今天";
+      if (index === 1) return "明天";
+      if (index === 2) return "后天";
+
+      const date = new Date(dateString + "T12:00:00");
+      return (date.getMonth() + 1) + "月" + date.getDate() + "日";
+    }
+
+    function getShortDate(dateString) {
+      const date = new Date(dateString + "T12:00:00");
+      return (date.getMonth() + 1) + "月" + date.getDate() + "日";
+    }
+
+    function getClothingAdvice(temperature, windSpeed, precipitation) {
+      if (temperature === null) {
+        return "暂时无法生成穿衣参考。请查看官方天气预报，并根据体感和身体情况增减衣物。";
+      }
+
+      if (temperature <= 0) {
+        return "建议厚外套、保暖内层、帽子或围巾；路面可能结冰或湿滑，请穿防滑鞋。";
+      }
+
+      if (temperature <= 8) {
+        return "建议羽绒服或厚外套，内搭保暖衣物；早晚温差大时可加围巾。";
+      }
+
+      if (temperature <= 15) {
+        return "建议夹克、薄棉服或针织外套；活动后出汗时注意及时保暖。";
+      }
+
+      if (temperature <= 22) {
+        return "建议长袖或薄外套，方便根据体感增减；早晚可额外带一件外搭。";
+      }
+
+      if (temperature <= 28) {
+        return "建议透气、宽松衣物；带水并注意防晒，避免长时间在强日照下活动。";
+      }
+
+      let advice = "天气偏热，建议轻薄透气衣物、遮阳帽和饮水；尽量避开高温时段。";
+
+      if (precipitation > 0 || windSpeed >= 20) {
+        advice += " 如有降水或较大风力，请携带轻便雨具或外套。";
+      }
+
+      return advice;
+    }
 
     function getActivitySuggestion(usAqi, temperature, precipitation, windSpeed) {
       if (temperature === null || precipitation === null || windSpeed === null) {
@@ -1074,11 +1445,47 @@
         };
       }
 
+      if (temperature >= 32) {
+        return {
+          title: "注意防暑，避免高温时段",
+          icon: "🌞",
+          message: "建议避开中午至下午的强热时段，选择较凉爽时段轻度活动，注意补水和休息。"
+        };
+      }
+
       return {
         title: "相对适合户外活动",
         icon: "🕺",
         message: "自动天气参考显示条件相对适合低至中等强度活动。请先热身，并随时根据身体感受休息。"
       };
+    }
+
+    function getShortActivityAdvice(temperature, precipitation, windSpeed, usAqi) {
+      if (temperature === null) {
+        return "暂时无法生成活动建议。出门前请查看官方天气和空气质量信息。";
+      }
+
+      if (usAqi !== null && usAqi > 150) {
+        return "空气情况参考值较高，建议改为室内拉伸、坐姿操或其他低强度活动。";
+      }
+
+      if (precipitation > 0.5) {
+        return "可能有较明显降水，建议减少户外活动；如外出，注意雨具和防滑。";
+      }
+
+      if (windSpeed >= 30) {
+        return "风力较大，建议避免在空旷处久留；必要时改为室内活动。";
+      }
+
+      if (temperature <= 5) {
+        return "天气偏冷，适合短时、低强度活动；先热身，活动后及时保暖。";
+      }
+
+      if (temperature >= 32) {
+        return "天气偏热，建议避开高温时段，减少强度，注意补水和休息。";
+      }
+
+      return "可考虑低至中等强度活动；先热身，带水，身体不适时及时休息。";
     }
 
     async function fetchJson(url, label) {
@@ -1097,6 +1504,7 @@
 
       if (!response.ok) {
         const body = await response.text().catch(() => "");
+
         throw new Error(
           label + "返回 HTTP " + response.status +
           (body ? "：" + body.slice(0, 120) : "")
@@ -1114,17 +1522,68 @@
       return value === null || value === undefined ? "--" : value + unit;
     }
 
+    function renderForecast(daily) {
+      const forecastGrid = document.getElementById("forecast-grid");
+
+      if (!daily || !daily.time || daily.time.length === 0) {
+        forecastGrid.innerHTML =
+          '<div class="forecast-empty">未来天气预测暂时无法显示。请查看上方北京官方天气预报链接。</div>';
+        return;
+      }
+
+      forecastGrid.innerHTML = "";
+
+      const daysToShow = Math.min(3, daily.time.length);
+
+      for (let i = 0; i < daysToShow; i++) {
+        const weather = getWeatherInfo(daily.weather_code?.[i]);
+        const card = document.createElement("article");
+
+        card.className = "forecast-card" + (i === 0 ? " today" : "");
+
+        const dayLabel = getDayLabel(i, daily.time[i]);
+        const dateLabel = getShortDate(daily.time[i]);
+        const high = daily.temperature_2m_max?.[i];
+        const low = daily.temperature_2m_min?.[i];
+        const rainChance = daily.precipitation_probability_max?.[i];
+        const maxWind = daily.wind_speed_10m_max?.[i];
+        const precipitation = daily.precipitation_sum?.[i];
+
+        card.innerHTML =
+          '<div class="forecast-day">' + dayLabel + '</div>' +
+          '<div class="forecast-date">' + dateLabel + '</div>' +
+          '<div class="forecast-icon" aria-hidden="true">' + weather.icon + '</div>' +
+          '<div class="forecast-condition">' + weather.text + '</div>' +
+          '<div class="forecast-temp">' +
+            valueOrDash(high, "°") +
+            ' <span>/ ' + valueOrDash(low, "°") + '</span>' +
+          '</div>' +
+          '<div class="forecast-meta">' +
+            '降水概率：' + valueOrDash(rainChance, "%") + '<br>' +
+            '预计降水：' + valueOrDash(precipitation, " mm") + '<br>' +
+            '最大风速：' + valueOrDash(maxWind, " km/h") +
+          '</div>';
+
+        forecastGrid.appendChild(card);
+      }
+    }
+
     async function loadWeatherAndAir() {
       const icon = document.getElementById("weather-icon");
       const status = document.getElementById("weather-status");
       const advice = document.getElementById("weather-advice");
       const details = document.getElementById("weather-details");
+      const todayOverview = document.getElementById("today-overview");
+      const clothingAdvice = document.getElementById("clothing-advice");
+      const activityAdvice = document.getElementById("activity-advice");
 
       const weatherUrl =
         "https://api.open-meteo.com/v1/forecast?" +
         "latitude=" + LATITUDE +
         "&longitude=" + LONGITUDE +
-        "&current=temperature_2m,apparent_temperature,precipitation,wind_speed_10m" +
+        "&current=temperature_2m,apparent_temperature,precipitation,wind_speed_10m,weather_code" +
+        "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,wind_speed_10m_max" +
+        "&forecast_days=3" +
         "&timezone=" + encodeURIComponent(TIMEZONE);
 
       const airUrl =
@@ -1146,16 +1605,28 @@
         airResult.status === "fulfilled" ? airResult.value : null;
 
       const weather = weatherData?.current ?? null;
+      const daily = weatherData?.daily ?? null;
       const air = airData?.current ?? null;
 
       if (!weather && !air) {
         icon.textContent = "⚠️";
         status.textContent = "自动参考信息暂时无法读取";
         advice.textContent =
-          "请直接点击下方按钮，查看北京官方天气预报和官方空气质量信息。";
+          "请直接点击上方按钮，查看北京官方天气预报和官方空气质量信息。";
 
         details.textContent =
           "自动参考数据暂不可用；出门前请以官方发布和现场情况为准。";
+
+        todayOverview.textContent =
+          "暂时无法读取自动天气参考。请查看北京官方天气预报。";
+
+        clothingAdvice.textContent =
+          "暂时无法生成穿衣建议。请结合官方预报、体感和个人情况增减衣物。";
+
+        activityAdvice.textContent =
+          "暂时无法生成活动建议。请根据官方天气、空气质量和身体情况决定。";
+
+        renderForecast(null);
 
         console.error("天气接口结果：", weatherResult);
         console.error("空气质量接口结果：", airResult);
@@ -1163,9 +1634,11 @@
       }
 
       const temperature = weather?.temperature_2m ?? null;
+      const apparentTemperature = weather?.apparent_temperature ?? null;
       const precipitation = weather?.precipitation ?? null;
       const windSpeed = weather?.wind_speed_10m ?? null;
       const usAqi = air?.us_aqi ?? null;
+      const currentWeather = getWeatherInfo(weather?.weather_code);
 
       const suggestion = getActivitySuggestion(
         usAqi,
@@ -1174,7 +1647,7 @@
         windSpeed
       );
 
-      icon.textContent = suggestion.icon;
+      icon.textContent = weather ? currentWeather.icon : suggestion.icon;
       status.textContent = suggestion.title;
       advice.textContent = suggestion.message;
 
@@ -1183,7 +1656,7 @@
       let detailsText =
         "自动参考时间：北京时间 " + dataTime + "\n" +
         "气温：" + valueOrDash(temperature, " °C") + "　" +
-        "体感：" + valueOrDash(weather?.apparent_temperature, " °C") + "\n" +
+        "体感：" + valueOrDash(apparentTemperature, " °C") + "\n" +
         "降水：" + valueOrDash(precipitation, " mm") + "　" +
         "风速：" + valueOrDash(windSpeed, " km/h");
 
@@ -1194,10 +1667,43 @@
           "　PM10 " +
           valueOrDash(air.pm10, " µg/m³");
       } else {
-        detailsText += "\n空气情况自动参考暂不可用，请查看下方官方空气质量链接。";
+        detailsText += "\n空气情况自动参考暂不可用，请查看官方空气质量链接。";
       }
 
       details.textContent = detailsText;
+
+      if (weather) {
+        const conditionText = currentWeather.text;
+
+        todayOverview.textContent =
+          conditionText + "，当前 " +
+          valueOrDash(temperature, "°C") +
+          "，体感 " +
+          valueOrDash(apparentTemperature, "°C") +
+          "；降水 " +
+          valueOrDash(precipitation, " mm") +
+          "，风速 " +
+          valueOrDash(windSpeed, " km/h") +
+          "。";
+      } else {
+        todayOverview.textContent =
+          "天气自动参考暂不可用；请点击上方按钮查看北京官方天气预报。";
+      }
+
+      clothingAdvice.textContent = getClothingAdvice(
+        temperature,
+        windSpeed,
+        precipitation
+      );
+
+      activityAdvice.textContent = getShortActivityAdvice(
+        temperature,
+        precipitation,
+        windSpeed,
+        usAqi
+      );
+
+      renderForecast(daily);
 
       console.log("天气自动参考数据：", weatherData);
       console.log("空气情况自动参考数据：", airData);
