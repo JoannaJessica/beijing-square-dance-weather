@@ -3,23 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>北京西城广场舞天气提示</title>
+  <title>西城乐舞指南｜老年广场舞活动支持</title>
 
   <style>
     :root {
-      --forest: #1d5a43;
-      --forest-dark: #123b2c;
-      --forest-light: #eaf5ee;
-      --sun: #f3b33d;
-      --sun-light: #fff5dc;
-      --sky: #dceff5;
-      --ink: #20342c;
-      --muted: #5f7168;
-      --line: #d8e4dc;
+      --ink: #183842;
+      --teal: #0f6673;
+      --teal-dark: #084955;
+      --teal-pale: #dff3f1;
+      --cream: #fffaf0;
       --paper: #ffffff;
-      --background: #f4f7f3;
-      --purple: #66548a;
-      --purple-light: #f2eef9;
+      --coral: #e96f51;
+      --coral-pale: #fff0ea;
+      --gold: #efa82f;
+      --gold-pale: #fff5d8;
+      --purple: #65528c;
+      --purple-pale: #f0ebfa;
+      --sky: #e4f2fb;
+      --line: #dbe6e7;
+      --muted: #5f7075;
+      --shadow: 0 12px 28px rgba(20, 68, 76, 0.10);
     }
 
     * {
@@ -32,94 +35,135 @@
 
     body {
       margin: 0;
-      background: var(--background);
       color: var(--ink);
+      background:
+        radial-gradient(circle at 5% 8%, #fff3d1 0, transparent 22%),
+        radial-gradient(circle at 94% 15%, #dff3f1 0, transparent 24%),
+        var(--cream);
       font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
       font-size: 18px;
-      line-height: 1.75;
+      line-height: 1.72;
     }
 
     a {
       color: inherit;
     }
 
-    .hero {
-      background:
-        radial-gradient(circle at 85% 10%, rgba(255, 219, 130, 0.30), transparent 22%),
-        linear-gradient(135deg, var(--forest-dark), var(--forest));
+    .topbar {
+      background: var(--teal-dark);
       color: white;
-      padding: 58px 20px 48px;
+      padding: 10px 20px;
+      font-size: 14px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+
+    .hero {
+      min-height: 470px;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      overflow: hidden;
+      color: white;
+      background:
+        linear-gradient(90deg, rgba(5, 55, 64, 0.92) 0%, rgba(8, 81, 88, 0.74) 48%, rgba(8, 74, 82, 0.20) 100%),
+        url("https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/ee29d7c3-a5bc-5403-986e-b26977c40514/40ba1727-a31c-5e9c-ad64-1e1760807810.jpg") center / cover;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -55px;
+      top: 25px;
+      width: 200px;
+      height: 200px;
+      border: 3px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
     }
 
     .hero-inner {
-      max-width: 1080px;
+      position: relative;
+      z-index: 1;
+      width: min(1100px, 100%);
       margin: 0 auto;
+      padding: 52px 22px 58px;
     }
 
-    .eyebrow {
-      display: inline-block;
-      padding: 6px 12px;
-      border: 1px solid rgba(255, 255, 255, 0.45);
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 14px;
       border-radius: 999px;
+      background: rgba(255, 255, 255, 0.18);
       font-size: 15px;
-      letter-spacing: 0.04em;
+    }
+
+    .brand-icon {
+      font-size: 19px;
     }
 
     h1 {
-      max-width: 760px;
-      margin: 18px 0 12px;
-      font-size: clamp(34px, 5vw, 52px);
-      line-height: 1.25;
+      max-width: 720px;
+      margin: 17px 0 12px;
+      font-size: clamp(39px, 6vw, 64px);
+      line-height: 1.16;
       letter-spacing: 0.02em;
     }
 
     .hero p {
-      max-width: 720px;
+      max-width: 670px;
       margin: 0;
       font-size: 20px;
-      opacity: 0.94;
     }
 
-    .hero-tags {
+    .quick-nav {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 24px;
+      margin-top: 26px;
     }
 
-    .hero-tags span {
-      padding: 7px 13px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.14);
-      font-size: 15px;
+    .quick-nav a {
+      padding: 9px 14px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--teal-dark);
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .quick-nav a:hover {
+      background: #ffe69d;
     }
 
     main {
-      max-width: 1080px;
+      width: min(1100px, 100%);
       margin: 0 auto;
-      padding: 32px 18px 64px;
+      padding: 35px 20px 72px;
     }
 
     section {
-      margin-top: 46px;
+      margin-top: 55px;
     }
 
-    .section-heading {
+    .section-header {
       display: flex;
-      align-items: end;
+      align-items: flex-end;
       justify-content: space-between;
       gap: 16px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     h2 {
       margin: 0;
-      color: var(--forest-dark);
-      font-size: clamp(26px, 3.5vw, 33px);
-      line-height: 1.35;
+      color: var(--teal-dark);
+      font-size: clamp(29px, 4vw, 38px);
+      line-height: 1.25;
     }
 
-    .section-note {
+    .section-subtitle {
       margin: 0;
       color: var(--muted);
       font-size: 15px;
@@ -129,113 +173,140 @@
     .card {
       background: var(--paper);
       border: 1px solid var(--line);
-      border-radius: 22px;
-      box-shadow: 0 10px 24px rgba(25, 62, 44, 0.07);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
     }
 
-    .today-card {
+    .status-card {
       display: grid;
-      grid-template-columns: 82px 1fr;
-      gap: 20px;
-      padding: 26px;
+      grid-template-columns: 110px 1fr;
+      gap: 24px;
+      align-items: center;
+      padding: 28px;
       border: 0;
-      background: linear-gradient(135deg, #fff7df, #ffffff);
-      box-shadow: 0 12px 28px rgba(139, 93, 0, 0.12);
+      background:
+        linear-gradient(135deg, rgba(255, 243, 207, 0.98), rgba(255, 255, 255, 0.98));
+      box-shadow: 0 14px 32px rgba(174, 118, 15, 0.16);
     }
 
-    .today-icon {
+    .status-icon {
       display: grid;
       place-items: center;
-      width: 78px;
-      height: 78px;
-      border-radius: 24px;
-      background: var(--sun);
-      font-size: 42px;
+      width: 100px;
+      height: 100px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #ffd66b, var(--gold));
+      font-size: 53px;
+      box-shadow: inset 0 -5px 0 rgba(130, 78, 0, 0.12);
     }
 
-    .today-label {
-      color: #886000;
-      font-size: 16px;
+    .eyebrow {
+      color: #8c5a00;
+      font-size: 15px;
       font-weight: bold;
     }
 
-    .today-title {
-      margin: 2px 0 8px;
-      color: #624300;
+    .status-card h3 {
+      margin: 3px 0 8px;
+      color: #704900;
       font-size: clamp(25px, 3.5vw, 34px);
-      line-height: 1.35;
+      line-height: 1.3;
     }
 
-    .today-card p {
+    .status-card p {
       margin: 0;
     }
 
-    .data-note {
-      margin-top: 13px !important;
+    .mini-note {
+      margin-top: 10px !important;
       color: var(--muted);
       font-size: 15px;
     }
 
-    .principles {
+    .steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-top: 18px;
+      margin-top: 20px;
     }
 
-    .principle {
-      padding: 22px;
+    .step {
+      position: relative;
+      min-height: 180px;
+      padding: 23px;
+      overflow: hidden;
+      border-radius: 20px;
       background: var(--paper);
       border: 1px solid var(--line);
-      border-radius: 18px;
     }
 
-    .principle-icon {
+    .step::after {
+      position: absolute;
+      right: 14px;
+      bottom: -12px;
+      color: rgba(15, 102, 115, 0.09);
+      font-size: 104px;
+      font-weight: bold;
+    }
+
+    .step:nth-child(1)::after {
+      content: "1";
+    }
+
+    .step:nth-child(2)::after {
+      content: "2";
+    }
+
+    .step:nth-child(3)::after {
+      content: "3";
+    }
+
+    .step-icon {
       display: grid;
       place-items: center;
-      width: 46px;
-      height: 46px;
-      margin-bottom: 12px;
-      border-radius: 14px;
-      background: var(--forest-light);
-      font-size: 25px;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 13px;
+      border-radius: 16px;
+      background: var(--teal-pale);
+      font-size: 27px;
     }
 
-    .principle h3 {
+    .step h3 {
       margin: 0 0 6px;
-      color: var(--forest-dark);
-      font-size: 20px;
+      color: var(--teal-dark);
+      font-size: 21px;
     }
 
-    .principle p {
+    .step p {
       margin: 0;
       color: var(--muted);
       font-size: 16px;
     }
 
-    .intro {
-      padding: 20px 22px;
-      background: #edf6f0;
-      border-left: 6px solid #63a77f;
-      border-radius: 14px;
-      color: #365444;
+    .info-strip {
+      padding: 19px 22px;
+      border-left: 7px solid var(--teal);
+      border-radius: 16px;
+      background: var(--teal-pale);
+      color: #24525b;
     }
 
-    .place-grid,
-    .video-grid {
+    .place-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
+      gap: 19px;
+      margin-top: 20px;
     }
 
     .place-card {
       position: relative;
       overflow: hidden;
-      padding: 23px;
-      background: var(--paper);
+      padding: 25px;
       border: 1px solid var(--line);
-      border-radius: 20px;
-      box-shadow: 0 7px 18px rgba(25, 62, 44, 0.06);
+      border-radius: 22px;
+      background: var(--paper);
+      box-shadow: 0 8px 22px rgba(20, 68, 76, 0.07);
     }
 
     .place-card::before {
@@ -244,43 +315,84 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 7px;
-      background: linear-gradient(90deg, #4d9b72, #8bc9a2);
+      height: 8px;
+      background: linear-gradient(90deg, var(--teal), #54b8b1);
+    }
+
+    .place-card:nth-child(2)::before {
+      background: linear-gradient(90deg, #508860, #9ac88d);
+    }
+
+    .place-card:nth-child(3)::before {
+      background: linear-gradient(90deg, #d77755, #eda774);
+    }
+
+    .place-card:nth-child(4)::before {
+      background: linear-gradient(90deg, #6173ae, #92a5d7);
+    }
+
+    .place-card:nth-child(5)::before {
+      background: linear-gradient(90deg, #8a619f, #c49bd1);
+    }
+
+    .place-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 2px 0 15px;
+    }
+
+    .place-emoji {
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      flex: 0 0 auto;
+      border-radius: 14px;
+      background: #e9f5f4;
+      font-size: 25px;
+    }
+
+    .place-card:nth-child(2) .place-emoji {
+      background: #eff6e9;
+    }
+
+    .place-card:nth-child(3) .place-emoji {
+      background: #fff0e7;
+    }
+
+    .place-card:nth-child(4) .place-emoji {
+      background: #edf0fb;
+    }
+
+    .place-card:nth-child(5) .place-emoji {
+      background: #f5ecf7;
     }
 
     .place-card h3 {
-      margin: 4px 0 15px;
-      color: var(--forest-dark);
+      margin: 0;
+      color: var(--teal-dark);
       font-size: 23px;
+      line-height: 1.3;
     }
 
     .place-card p {
-      margin: 9px 0;
+      margin: 10px 0;
       font-size: 16px;
     }
 
     .label {
-      color: var(--forest);
+      color: var(--teal-dark);
       font-weight: bold;
     }
 
     .fact {
       display: inline-block;
-      margin: 3px 0;
+      margin-top: 2px;
       padding: 5px 10px;
-      border-radius: 8px;
-      background: #eef7f1;
-      color: #23563b;
-      font-weight: bold;
-    }
-
-    .pending {
-      display: inline-block;
-      padding: 4px 9px;
-      border-radius: 8px;
-      background: var(--sun-light);
-      color: #825400;
-      font-size: 14px;
+      border-radius: 9px;
+      background: #eaf7f4;
+      color: #11615b;
       font-weight: bold;
     }
 
@@ -290,115 +402,134 @@
     }
 
     .health-card {
-      padding: 26px;
+      padding: 25px;
+      border-top: 8px solid var(--coral);
     }
 
-    .health-list {
+    .health-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 13px;
+      gap: 14px;
       padding: 0;
       margin: 0;
       list-style: none;
     }
 
-    .health-list li {
-      padding: 16px;
-      border-radius: 15px;
-      background: #f7faf8;
-      border: 1px solid #e3ece6;
+    .health-grid li {
+      padding: 17px;
+      border-radius: 17px;
+      background: #fff8f4;
+      border: 1px solid #f5ddd4;
       font-size: 16px;
     }
 
-    .health-list strong {
-      color: var(--forest-dark);
+    .health-grid strong {
+      color: #ae4f37;
     }
 
-    .video-section {
+    .video-zone {
       padding: 28px;
-      background: var(--purple-light);
-      border: 1px solid #ded4ec;
-      border-radius: 22px;
+      border: 1px solid #dcd1ee;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 88% 8%, rgba(255, 220, 129, 0.36), transparent 24%),
+        var(--purple-pale);
     }
 
-    .video-section > p {
+    .video-zone > p {
       margin-top: 0;
-      color: #514468;
+      color: #55476c;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
     }
 
     .video-card {
-      padding: 20px;
+      padding: 21px;
+      border: 1px solid #ddd1ed;
+      border-radius: 19px;
       background: white;
-      border: 1px solid #ded4ec;
-      border-radius: 18px;
+    }
+
+    .video-top {
+      display: flex;
+      align-items: center;
+      gap: 11px;
     }
 
     .video-number {
-      display: inline-grid;
+      display: grid;
       place-items: center;
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      background: #e9e0f6;
+      background: #e7dcf6;
       color: var(--purple);
       font-weight: bold;
     }
 
     .video-card h3 {
-      margin: 10px 0 7px;
-      color: #4e3e6c;
+      margin: 0;
+      color: #53406f;
       font-size: 21px;
     }
 
     .video-card p {
       min-height: 54px;
-      margin: 0 0 15px;
+      margin: 13px 0 17px;
       color: #665b75;
       font-size: 16px;
     }
 
     .video-button {
-      display: inline-block;
-      padding: 11px 15px;
-      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 16px;
+      border-radius: 11px;
       background: var(--purple);
       color: white;
-      font-weight: bold;
       text-decoration: none;
+      font-weight: bold;
     }
 
     .video-button:hover {
-      background: #4f3f70;
+      background: #4e3d6c;
+      transform: translateY(-1px);
     }
 
     .notice {
-      padding: 23px;
+      padding: 24px;
+      border: 1px solid #f2d999;
+      border-radius: 20px;
       background: #fffaf0;
-      border: 1px solid #f0d897;
-      border-radius: 18px;
     }
 
     .notice p {
-      margin: 7px 0;
+      margin: 8px 0;
     }
 
     .source-box {
-      padding: 20px 23px;
-      background: #edf6f0;
+      padding: 21px 24px;
       border-radius: 18px;
-      color: #3f5147;
+      background: var(--sky);
+      color: #365866;
       font-size: 15px;
     }
 
     .source-box ul {
-      margin: 6px 0;
+      margin: 5px 0;
       padding-left: 22px;
     }
 
     footer {
-      padding: 30px 20px;
-      background: var(--forest-dark);
-      color: #d6e6dc;
+      margin-top: 10px;
+      padding: 34px 20px;
+      background: var(--teal-dark);
+      color: #d5ebec;
       text-align: center;
       font-size: 14px;
     }
@@ -409,128 +540,136 @@
       }
 
       .hero {
-        padding: 42px 18px 38px;
+        min-height: 420px;
+        background-position: 58% center;
+      }
+
+      .hero-inner {
+        padding: 44px 20px 46px;
       }
 
       .hero p {
         font-size: 18px;
       }
 
-      .section-heading {
+      .section-header {
         display: block;
       }
 
-      .section-note {
+      .section-subtitle {
         margin-top: 5px;
         text-align: left;
       }
 
-      .principles,
+      .status-card {
+        grid-template-columns: 1fr;
+      }
+
+      .status-icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 21px;
+        font-size: 38px;
+      }
+
+      .steps,
       .place-grid,
-      .video-grid,
-      .health-list {
+      .health-grid,
+      .video-grid {
         grid-template-columns: 1fr;
       }
 
-      .today-card {
-        grid-template-columns: 1fr;
-      }
-
-      .today-icon {
-        width: 62px;
-        height: 62px;
-        font-size: 33px;
-        border-radius: 19px;
-      }
-
-      .video-section {
-        padding: 21px;
+      .video-zone {
+        padding: 20px;
       }
     }
   </style>
 </head>
 
 <body>
+  <div class="topbar">🌼 面向北京西城社区的老年友好活动信息项目</div>
+
   <header class="hero">
     <div class="hero-inner">
-      <div class="eyebrow">北京西城区 · 社区学生项目</div>
-      <h1>北京西城广场舞天气提示</h1>
-      <p>为老年人和家属提供更清楚的地点、天气、空气质量与活动建议，让每一次跳舞更安心、更有准备。</p>
+      <div class="brand"><span class="brand-icon">🕺</span>西城乐舞指南 · 学生社区项目</div>
+      <h1>跳得开心，<br>也跳得更安心。</h1>
+      <p>为老年人和家属提供更清楚的活动地点、天气与空气质量提示、身体情况建议和广场舞教学资源。</p>
 
-      <div class="hero-tags">
-        <span>🌿 老年友好</span>
-        <span>🕺 户外活动</span>
-        <span>☀️ 天气提示</span>
-        <span>📍 社区地点</span>
-      </div>
+      <nav class="quick-nav">
+        <a href="#today">今日提示</a>
+        <a href="#places">活动地点</a>
+        <a href="#health">健康建议</a>
+        <a href="#videos">教学视频</a>
+      </nav>
     </div>
   </header>
 
   <main>
-    <section>
-      <div class="section-heading">
+    <section id="today">
+      <div class="section-header">
         <h2>今天的户外活动提示</h2>
-        <p class="section-note">参考地点：北京西城区附近</p>
+        <p class="section-subtitle">参考区域：北京西城区附近</p>
       </div>
 
-      <div class="today-card card">
-        <div class="today-icon">☀️</div>
+      <div class="status-card card">
+        <div class="status-icon">☀️</div>
         <div>
-          <div class="today-label">网站第一阶段</div>
-          <div class="today-title">天气与空气质量功能准备中</div>
-          <p>
-            本网站目前先整理附近活动地点与老年人活动建议。后续将加入公开、文档化的天气和空气质量数据，
-            为每天傍晚的户外广场舞提供“适合、谨慎、不适合”的提示。
-          </p>
-          <p class="data-note">
-            在数据功能上线前，请在出门前查看当日官方天气预报和空气质量信息。
-          </p>
+          <div class="eyebrow">网站第一阶段</div>
+          <h3>天气与空气质量功能准备中</h3>
+          <p>目前先整理附近活动地点与老年人活动建议。后续将加入公开、文档化的天气和空气质量数据，为每天傍晚的户外广场舞提供“适合、谨慎、不适合”的提示。</p>
+          <p class="mini-note">出门前，请结合当日官方天气预报、空气质量信息和自己的身体状况决定是否活动。</p>
         </div>
       </div>
 
-      <div class="principles">
-        <div class="principle">
-          <div class="principle-icon">🌤️</div>
+      <div class="steps">
+        <article class="step">
+          <div class="step-icon">🌦️</div>
           <h3>先看天气</h3>
-          <p>低温、降雨和大风时，减少户外活动时间，注意保暖和防滑。</p>
-        </div>
+          <p>低温、降雨或大风时，减少户外时间，注意保暖和防滑。</p>
+        </article>
 
-        <div class="principle">
-          <div class="principle-icon">📍</div>
+        <article class="step">
+          <div class="step-icon">🗺️</div>
           <h3>再选地点</h3>
-          <p>优先选择平整、照明足、有座椅、便于中途休息的活动空间。</p>
-        </div>
+          <p>优先选择地面平整、照明充足、有座椅的活动空间。</p>
+        </article>
 
-        <div class="principle">
-          <div class="principle-icon">❤️</div>
+        <article class="step">
+          <div class="step-icon">❤️</div>
           <h3>量力活动</h3>
-          <p>热身后再开始；任何胸闷、头晕、气喘或疼痛加重都应及时休息。</p>
-        </div>
+          <p>先热身；胸闷、头晕、气喘或疼痛时立刻停下来休息。</p>
+        </article>
       </div>
     </section>
 
-    <section>
-      <div class="section-heading">
+    <section id="places">
+      <div class="section-header">
         <h2>附近活动地点</h2>
-        <p class="section-note">部分信息仍需实地观察或以现场公告为准</p>
+        <p class="section-subtitle">请以现场公告与管理规定为准</p>
       </div>
 
-      <div class="intro">
-        “园区面积”不等于“可以跳舞的空地面积”。建议同时关注地面平整度、夜间照明、人流、座椅、厕所和雨雪天防滑情况。
+      <div class="info-strip">
+        <strong>小提醒：</strong>园区面积不等于可以跳舞的空地面积。选择地点时，还应关注照明、人流、座椅、厕所、地面平整度和雨雪天防滑情况。
       </div>
 
       <div class="place-grid">
         <article class="place-card">
-          <h3>北京展览馆周边广场</h3>
+          <div class="place-title">
+            <div class="place-emoji">🏛️</div>
+            <h3>北京展览馆周边广场</h3>
+          </div>
           <p><span class="label">位置：</span>西城区西直门外大街 135 号附近</p>
           <p><span class="label">公开面积参考：</span><span class="fact">整体园区约 13.2 万平方米</span></p>
-          <p><span class="small-text">这不是广场可跳舞面积。</span></p>
+          <p class="small-text">这不是广场可跳舞面积。</p>
           <p><span class="label">开放时间：</span><span class="fact">24 小时开放</span></p>
           <p><span class="label">活动时注意：</span>如遇展览、安保或临时管理安排，请以现场提示为准；观察地面、照明、人流和车流噪声。</p>
         </article>
 
         <article class="place-card">
-          <h3>紫竹院公园</h3>
+          <div class="place-title">
+            <div class="place-emoji">🌿</div>
+            <h3>紫竹院公园</h3>
+          </div>
           <p><span class="label">位置：</span>海淀区白石桥附近、中关村南大街一带</p>
           <p><span class="label">园区面积：</span><span class="fact">约 45.73–47.35 公顷</span></p>
           <p><span class="label">开放时间：</span>通常 6:00 开园；旺季约至 22:00，淡季约至 21:00–21:30。</p>
@@ -539,7 +678,10 @@
         </article>
 
         <article class="place-card">
-          <h3>月坛公园</h3>
+          <div class="place-title">
+            <div class="place-emoji">🌙</div>
+            <h3>月坛公园</h3>
+          </div>
           <p><span class="label">位置：</span>西城区月坛北街甲 6 号</p>
           <p><span class="label">园区面积：</span><span class="fact">约 8.26 公顷</span></p>
           <p><span class="label">开放时间：</span>冬令时通常 6:00–21:00；夏令时通常 6:00–21:30。</p>
@@ -547,7 +689,10 @@
         </article>
 
         <article class="place-card">
-          <h3>动物园北门广场</h3>
+          <div class="place-title">
+            <div class="place-emoji">🦁</div>
+            <h3>动物园北门广场</h3>
+          </div>
           <p><span class="label">位置：</span>北京动物园北门周边，西直门外大街一带</p>
           <p><span class="label">可跳舞面积：</span><span class="fact">约 500 平方米</span></p>
           <p><span class="label">开放时间参考：</span>动物园园区旺季通常 7:30–19:00、淡季通常 7:30–18:00；北门外广场不等同于园区开放区域。</p>
@@ -555,7 +700,10 @@
         </article>
 
         <article class="place-card">
-          <h3>受壁街街角公园</h3>
+          <div class="place-title">
+            <div class="place-emoji">🌳</div>
+            <h3>受壁街街角公园</h3>
+          </div>
           <p><span class="label">位置：</span>西城区受壁街周边</p>
           <p><span class="label">面积：</span><span class="fact">约 1.25 公顷</span></p>
           <p><span class="label">开放时间：</span><span class="fact">24 小时开放</span></p>
@@ -564,69 +712,75 @@
       </div>
     </section>
 
-    <section>
-      <div class="section-heading">
+    <section id="health">
+      <div class="section-header">
         <h2>不同人群的小建议</h2>
-        <p class="section-note">一般健康信息，不替代医疗建议</p>
+        <p class="section-subtitle">一般健康信息，不替代医疗建议</p>
       </div>
 
       <div class="health-card card">
-        <ul class="health-list">
-          <li><strong>膝盖不舒服：</strong>选择平整、防滑地面；避免跳跃、急转和过长时间站立；优先选择有座椅的地点。</li>
-          <li><strong>呼吸敏感或有哮喘：</strong>空气质量较差、风大或天气转凉时优先室内轻度活动，并遵循已有医生建议。</li>
-          <li><strong>心脑血管风险较高：</strong>低温、大风、空气污染或身体不适时避免高强度户外活动；不要空腹或刚吃饱就剧烈跳舞。</li>
-          <li><strong>所有参与者：</strong>先热身，穿防滑运动鞋，带水和常用物品；胸闷、头晕、气喘或疼痛加重时立即停止并休息。</li>
+        <ul class="health-grid">
+          ><strong>🦵 膝盖不舒服：</strong>选择平整、防滑地面；避免跳跃、急转和过长时间站立；优先选择有座椅的地点。</li>
+          ><strong>🌬️ 呼吸敏感或有哮喘：</strong>空气质量较差、风大或天气转凉时优先室内轻度活动，并遵循已有医生建议。</li>
+          ><strong>🫀 心脑血管风险较高：</strong>低温、大风、空气污染或身体不适时避免高强度户外活动；不要空腹或刚吃饱就剧烈跳舞。</li>
+          ><strong>💧 所有参与者：</strong>先热身，穿防滑运动鞋，带水和常用物品；胸闷、头晕、气喘或疼痛加重时立即停止并休息。</li>
         </ul>
       </div>
     </section>
 
-    <section>
-      <div class="section-heading">
+    <section id="videos">
+      <div class="section-header">
         <h2>广场舞教学小视频</h2>
-        <p class="section-note">点击后将在 B 站新页面打开</p>
+        <p class="section-subtitle">点击后将在 B 站新页面打开</p>
       </div>
 
-      <div class="video-section">
+      <div class="video-zone">
         <p>以下视频由原发布者上传至哔哩哔哩。建议先做热身，从低强度动作和动作分解开始；练习中可以随时暂停、喝水或休息。</p>
 
         <div class="video-grid">
           <article class="video-card">
-            <div class="video-number">1</div>
-            <h3>广场舞基本步教学</h3>
+            <div class="video-top">
+              <div class="video-number">1</div>
+              <h3>广场舞基本步教学</h3>
+            </div>
             <p>适合零基础学习基本步和跟练节奏。</p>
-            <a class="video-button" href="https://www.bilibili.com/video/BV18gT5ztECn/" target="_blank" rel="noopener noreferrer">打开教学视频</a>
+            <a class="video-button" href="https://www.bilibili.com/video/BV18gT5ztECn/" target="_blank" rel="noopener noreferrer">▶ 打开教学视频</a>
           </article>
 
           <article class="video-card">
-            <div class="video-number">2</div>
-            <h3>1 小时广场舞跟练</h3>
+            <div class="video-top">
+              <div class="video-number">2</div>
+              <h3>1 小时广场舞跟练</h3>
+            </div>
             <p>适合有一定基础的人进行较长时间跟练；请自主安排中途休息。</p>
-            <a class="video-button" href="https://www.bilibili.com/video/BV1fi4y137kn/" target="_blank" rel="noopener noreferrer">打开教学视频</a>
+            <a class="video-button" href="https://www.bilibili.com/video/BV1fi4y137kn/" target="_blank" rel="noopener noreferrer">▶ 打开教学视频</a>
           </article>
 
           <article class="video-card">
-            <div class="video-number">3</div>
-            <h3>《一条大河》零基础分解</h3>
+            <div class="video-top">
+              <div class="video-number">3</div>
+              <h3>《一条大河》零基础分解</h3>
+            </div>
             <p>老歌广场舞，包含较适合初学者的动作分解提示。</p>
-            <a class="video-button" href="https://www.bilibili.com/video/BV14SL26JE8V/" target="_blank" rel="noopener noreferrer">打开教学视频</a>
+            <a class="video-button" href="https://www.bilibili.com/video/BV14SL26JE8V/" target="_blank" rel="noopener noreferrer">▶ 打开教学视频</a>
           </article>
 
           <article class="video-card">
-            <div class="video-number">4</div>
-            <h3>《鸟儿摇》32 步教学</h3>
+            <div class="video-top">
+              <div class="video-number">4</div>
+              <h3>《鸟儿摇》32 步教学</h3>
+            </div>
             <p>有正面和背面动作示范；膝盖不适者可减少跳跃和快速转向。</p>
-            <a class="video-button" href="https://www.bilibili.com/video/BV1vouvzeEES/" target="_blank" rel="noopener noreferrer">打开教学视频</a>
+            <a class="video-button" href="https://www.bilibili.com/video/BV1vouvzeEES/" target="_blank" rel="noopener noreferrer">▶ 打开教学视频</a>
           </article>
         </div>
 
-        <p class="small-text">
-          提示：本网站仅链接至第三方公开视频，不拥有视频版权。视频内容由原发布者负责；请根据个人身体状况调整动作，不适时停止。
-        </p>
+        <p class="small-text">提示：本网站仅链接至第三方公开视频，不拥有视频版权。视频内容由原发布者负责；请根据个人身体状况调整动作，不适时停止。</p>
       </div>
     </section>
 
     <section>
-      <div class="section-heading">
+      <div class="section-header">
         <h2>数据与使用说明</h2>
       </div>
 
@@ -637,24 +791,24 @@
     </section>
 
     <section>
-      <div class="section-heading">
+      <div class="section-header">
         <h2>信息来源</h2>
       </div>
 
       <div class="source-box">
         <ul>
-          <li>紫竹院公园：北京市园林绿化局及相关公园介绍页面。</li>
-          <li>月坛公园：北京市园林绿化局、西城区政府及北京旅游网公开信息。</li>
-          <li>北京动物园：北京动物园官网公开开放时间。</li>
-          <li>北京展览馆：公开场馆介绍；页面中的面积为展馆整体参考，不是广场活动面积。</li>
-          <li>受壁街街角公园：面积与开放时间为社区参考信息，建议以现场标牌与管理规定为准。</li>
+          >紫竹院公园：北京市园林绿化局及相关公园介绍页面。</li>
+          >月坛公园：北京市园林绿化局、西城区政府及北京旅游网公开信息。</li>
+          >北京动物园：北京动物园官网公开开放时间。</li>
+          >北京展览馆：公开场馆介绍；页面中的面积为展馆整体参考，不是广场活动面积。</li>
+          >受壁街街角公园：面积与开放时间为社区参考信息，建议以现场标牌与管理规定为准。</li>
         </ul>
       </div>
     </section>
   </main>
 
   <footer>
-    北京西城老年人广场舞支持工具 · 学生项目
+    西城乐舞指南 · 北京西城老年人广场舞支持工具 · 学生社区项目
   </footer>
 </body>
 </html>
