@@ -156,17 +156,26 @@
   <main>
     <h2>今天的户外活动提示</h2>
 
-    <section class="card today-card">
-      <div class="small-text">网站第一阶段</div>
-      <div class="big-text">天气与空气质量功能准备中</div>
-      <p>
-        本网站目前先整理附近活动地点的基本信息。后续将加入公开、文档化的天气和空气质量数据，
-        为每天傍晚的户外广场舞提供“适合、谨慎、不适合”的提示。
-      </p>
-      <p class="small-text">
-        在数据功能上线前，请在出门前查看当日官方天气预报和空气质量信息。
-      </p>
-    </section>
+   <section class="card today-card">
+  <div class="small-text">北京西城区附近 · 自动更新</div>
+
+  <div id="weather-status" class="big-text">
+    正在读取天气和空气质量数据……
+  </div>
+
+  <p id="weather-advice">
+    请稍等几秒钟。
+  </p>
+
+  <div id="weather-details" class="small-text">
+    数据加载中……
+  </div>
+
+  <p class="small-text">
+    数据来源：Open-Meteo Weather API 与 Air Quality API。
+    空气质量为模型参考数据；US AQI 不等于中国 AQI，也不是北京官方站点实测值。
+  </p>
+</section>
 
     <h2>附近活动地点</h2>
 
@@ -277,5 +286,109 @@
   <footer>
     学生项目 · 北京西城老年人广场舞支持工具
   </footer>
+<script>
+  const LATITUDE = 39.91;
+  const LONGITUDE = 116.35;
+  const TIMEZONE = "Asia/Shanghai";
+
+  function activityAdvice(usAqi, temperature, precipitation, windSpeed) {
+    if (
+      usAqi === null ||
+      temperature === null ||
+      precipitation === null ||
+      windSpeed === null
+    ) {
+      return {
+        status: "数据不足",
+        message: "暂时没有读到完整数据。请出门前查看官方天气和空气质量信息。"
+      };
+    }
+
+    if (usAqi > 150 || temperature <= -5 || precipitation > 0.5 || windSpeed >= 30) {
+      return {
+        status: "不适合户外跳舞",
+        message: "污染、低温、降水或大风风险较高。建议改为室内拉伸、坐姿操或其他轻度活动。"
+      };
+    }
+
+    if (usAqi > 100 || temperature <= 5 || precipitation > 0 || windSpeed >= 20) {
+      return {
+        status: "谨慎活动",
+        message: "建议缩短活动时间、降低强度、注意保暖和防滑；呼吸敏感或心脑血管风险较高的老人优先选择室内活动。"
+      };
+    }
+
+    return {
+      status: "相对适合户外活动",
+      message: "模型参考数据提示空气质量和天气条件相对适合低至中等强度活动；请先热身，并随时根据身体感受休息。"
+    };
+  }
+
+  async function loadTodayData() {
+    const statusElement = document.getElementById("weather-status");
+    const adviceElement = document.getElementById("weather-advice");
+    const detailsElement = document.getElementById("weather-details");
+
+    const weatherUrl =
+      "https://api.open-meteo.com/v1/forecast?" +
+      "latitude=" + LATITUDE +
+      "&longitude=" + LONGITUDE +
+      "&current=temperature_2m,apparent_temperature,precipitation,wind_speed_10m" +
+      "&timezone=" + TIMEZONE;
+
+    const airUrl =
+      "https://air-quality-api.open-meteo.com/v1/air-quality?" +
+      "latitude=" + LATITUDE +
+      "&longitude=" + LONGITUDE +
+      "&current=us_aqi,pm2_5,pm10" +
+      "&timezone=" + TIMEZONE;
+
+    try {
+      const [weatherResponse, airResponse] = await Promise.all([
+        fetch(weatherUrl),
+        fetch(airUrl)
+      ]);
+
+      if (!weatherResponse.ok || !airResponse.ok) {
+        throw new Error("数据接口暂时没有响应。");
+      }
+
+      const weatherData = await weatherResponse.json();
+      const airData = await airResponse.json();
+
+      const weather = weatherData.current;
+      const air = airData.current;
+
+      const result = activityAdvice(
+        air.us_aqi,
+        weather.temperature_2m,
+        weather.precipitation,
+        weather.wind_speed_10m
+      );
+
+      statusElement.textContent = result.status;
+      adviceElement.textContent = result.message;
+
+      detailsElement.innerHTML =
+        "更新时间：北京时间 " + (weather.time || "未知") + "<br>" +
+        "气温：" + (weather.temperature_2m ?? "--") + " °C<br>" +
+        "体感温度：" + (weather.apparent_temperature ?? "--") + " °C<br>" +
+        "降水：" + (weather.precipitation ?? "--") + " mm<br>" +
+        "风速：" + (weather.wind_speed_10m ?? "--") + " km/h<br>" +
+        "US AQI（模型参考）：" + (air.us_aqi ?? "--") + "<br>" +
+        "PM2.5：" + (air.pm2_5 ?? "--") + " µg/m³<br>" +
+        "PM10：" + (air.pm10 ?? "--") + " µg/m³";
+
+    } catch (error) {
+      statusElement.textContent = "暂时无法读取数据";
+      adviceElement.textContent =
+        "请检查网络后刷新页面，或在出门前查看官方天气和空气质量信息。";
+      detailsElement.textContent =
+        "读取失败原因：" + error.message;
+    }
+  }
+
+  loadTodayData();
+</script>
 </body>
 </html>
