@@ -448,6 +448,244 @@
   transform: rotate(180deg);
 }
 
+.weather-prep-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(310px, 0.9fr);
+  gap: 18px;
+  margin-top: 20px;
+  align-items: stretch;
+}
+
+.daily-summary-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.daily-summary-stack .summary-card {
+  min-height: 0;
+  padding: 18px 21px;
+}
+
+.daily-summary-stack .summary-card h3 {
+  margin-bottom: 5px;
+}
+
+.packing-card {
+  padding: 22px;
+  border: 1px solid #d7e8da;
+  border-top: 8px solid #508860;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 90% 8%, rgba(255, 221, 130, 0.28), transparent 19%),
+    linear-gradient(135deg, #f1f9f1, #ffffff);
+  box-shadow: 0 8px 22px rgba(20, 68, 76, 0.07);
+}
+
+.packing-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #d7e8da;
+}
+
+.packing-icon {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  flex: 0 0 auto;
+  border-radius: 16px;
+  background: #dcefdc;
+  font-size: 28px;
+}
+
+.packing-card h3 {
+  margin: 0;
+  color: #2f6540;
+  font-size: 23px;
+  line-height: 1.25;
+}
+
+.packing-card-header p {
+  margin: 2px 0 0;
+  color: #577260;
+  font-size: 15px;
+}
+
+.packing-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.packing-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 32px;
+  color: #294c35;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.packing-item span {
+  display: grid;
+  place-items: center;
+  width: 23px;
+  height: 23px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #4f9560;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.packing-reminders {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.packing-reminder {
+  margin: 0;
+  padding: 9px 10px;
+  border-radius: 11px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.packing-reminder span {
+  margin-right: 5px;
+}
+
+.packing-reminder.warm {
+  background: #fff4cf;
+  color: #76580b;
+}
+
+.packing-reminder.cool {
+  background: #e7f2fb;
+  color: #315d79;
+}
+
+.packing-reminder.personal {
+  background: #f1eafa;
+  color: #5e477d;
+}
+
+.packing-note {
+  margin: 13px 0 0;
+  color: #66736a;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+@media (max-width: 760px) {
+  .weather-top-layout,
+  .weather-prep-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .forecast-square-button {
+    min-height: 190px;
+  }
+
+  .weather-prep-layout {
+    margin-top: 16px;
+  }
+
+  .daily-summary-stack .summary-card {
+    padding: 19px;
+  }
+
+  .packing-card {
+    padding: 20px;
+  }
+
+  .packing-item {
+    font-size: 17px;
+  }
+}
+    .weather-top-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.weather-top-layout .status-card {
+  height: 100%;
+}
+
+.forecast-square-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 290px;
+  padding: 24px 18px;
+  border: 3px solid var(--teal);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 82% 14%, rgba(255, 218, 112, 0.58), transparent 22%),
+    linear-gradient(145deg, #dff6f3, #ffffff);
+  color: var(--teal-dark);
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 12px 26px rgba(20, 68, 76, 0.13);
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.forecast-square-button:hover,
+.forecast-square-button:focus-visible {
+  background:
+    radial-gradient(circle at 82% 14%, rgba(255, 218, 112, 0.72), transparent 22%),
+    linear-gradient(145deg, #cdeee9, #ffffff);
+  transform: translateY(-2px);
+  outline: 4px solid rgba(15, 102, 115, 0.22);
+  outline-offset: 3px;
+}
+
+.forecast-square-icon {
+  display: grid;
+  place-items: center;
+  width: 86px;
+  height: 86px;
+  margin-bottom: 12px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: inset 0 0 0 2px rgba(15, 102, 115, 0.12);
+  font-size: 53px;
+  line-height: 1;
+}
+
+.forecast-square-title {
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 1.25;
+}
+
+.forecast-square-note {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.forecast-square-arrow {
+  margin-top: 9px;
+  font-size: 38px;
+  line-height: 0.8;
+  transition: transform 0.2s ease;
+}
+
+.forecast-square-button[aria-expanded="true"] .forecast-square-arrow {
+  transform: rotate(180deg);
+}
+
 @media (max-width: 760px) {
   .weather-top-layout {
     grid-template-columns: 1fr;
@@ -1151,7 +1389,7 @@
   </header>
 
   <main>
-   <section id="today">
+  <section id="today">
   <div class="section-header">
     <h2>天气与活动参考</h2>
     <p class="section-subtitle">参考区域：北京西城区附近</p>
@@ -1163,7 +1401,10 @@
 
       <div>
         <div class="eyebrow">北京西城区附近 · 自动天气参考</div>
-        <h3 id="weather-status" aria-live="polite">正在读取天气信息……</h3>
+
+        <h3 id="weather-status" aria-live="polite">
+          正在读取天气信息……
+        </h3>
 
         <p id="weather-advice" aria-live="polite">
           请等待几秒钟。出门前也建议核对官方天气与空气质量信息。
@@ -1178,14 +1419,14 @@
              href="https://www.weather.com.cn/weather/101010100.shtml"
              target="_blank"
              rel="noopener noreferrer">
-            ☁️ 查看北京官方天气预报
+            ☁️ 官方天气
           </a>
 
           <a class="official-button air"
              href="https://air.cnemc.cn:18007/?zbb=true"
              target="_blank"
              rel="noopener noreferrer">
-            🌿 查看北京官方空气质量
+            🌿 空气质量
           </a>
         </div>
 
@@ -1204,26 +1445,96 @@
     >
       <span class="forecast-square-icon" aria-hidden="true">🌦️</span>
       <span class="forecast-square-title">未来三天</span>
-      <span class="forecast-square-note" id="forecast-button-note">点击查看预报</span>
-      <span class="forecast-square-arrow" id="forecast-arrow" aria-hidden="true">⌄</span>
+      <span class="forecast-square-note" id="forecast-button-note">
+        点击查看预报
+      </span>
+      <span class="forecast-square-arrow" id="forecast-arrow" aria-hidden="true">
+        ⌄
+      </span>
     </button>
   </div>
 
-  <div class="daily-summary-grid">
-    <article class="summary-card today-data">
-      <h3><span class="summary-icon">🌡️</span>今天概览</h3>
-      <p id="today-overview">正在读取今日气温、降水和风速……</p>
-    </article>
+  <div class="weather-prep-layout">
+    <div class="daily-summary-stack">
+      <article class="summary-card today-data">
+        <h3><span class="summary-icon">🌡️</span>今天概览</h3>
+        <p id="today-overview">正在读取今日气温、降水和风速……</p>
+      </article>
 
-    <article class="summary-card clothing">
-      <h3><span class="summary-icon">🧥</span>穿衣参考</h3>
-      <p id="clothing-advice">正在根据天气生成穿衣建议……</p>
-    </article>
+      <article class="summary-card clothing">
+        <h3><span class="summary-icon">🧥</span>穿衣参考</h3>
+        <p id="clothing-advice">正在根据天气生成穿衣建议……</p>
+      </article>
 
-    <article class="summary-card activity">
-      <h3><span class="summary-icon">🕺</span>活动小建议</h3>
-      <p id="activity-advice">正在根据天气生成活动建议……</p>
-    </article>
+      <article class="summary-card activity">
+        <h3><span class="summary-icon">🕺</span>活动小建议</h3>
+        <p id="activity-advice">正在根据天气生成活动建议……</p>
+      </article>
+    </div>
+
+    <aside class="packing-card" aria-label="出门前携带物品提示">
+      <div class="packing-card-header">
+        <div class="packing-icon" aria-hidden="true">✅</div>
+
+        <div>
+          <h3>出门前检查</h3>
+          <p>出门前花半分钟检查一下。</p>
+        </div>
+      </div>
+
+      <div class="packing-list" role="list">
+        <div class="packing-item" role="listitem">
+          <span aria-hidden="true">✓</span>
+          手机、钥匙
+        </div>
+
+        <div class="packing-item" role="listitem">
+          <span aria-hidden="true">✓</span>
+          公交卡 / 门禁卡 / 少量零钱
+        </div>
+
+        <div class="packing-item" role="listitem">
+          <span aria-hidden="true">✓</span>
+          饮用水
+        </div>
+
+        <div class="packing-item" role="listitem">
+          <span aria-hidden="true">✓</span>
+          防滑、合脚的运动鞋
+        </div>
+
+        <div class="packing-item" role="listitem">
+          <span aria-hidden="true">✓</span>
+          按医嘱携带的常用药
+        </div>
+
+        <div class="packing-item" role="listitem">
+          <span aria-hidden="true">✓</span>
+          纸巾 / 小毛巾
+        </div>
+      </div>
+
+      <div class="packing-reminders">
+        <p class="packing-reminder warm">
+          <span aria-hidden="true">☀️</span>
+          晴热：帽子、小扇子、湿巾
+        </p>
+
+        <p class="packing-reminder cool">
+          <span aria-hidden="true">🌧️</span>
+          风雨 / 转凉：雨具、外套、围巾、帽子
+        </p>
+
+        <p class="packing-reminder personal">
+          <span aria-hidden="true">👓</span>
+          按需：眼镜、老花镜、助听设备、助行杖
+        </p>
+      </div>
+
+      <p class="packing-note">
+        常用药请按医生或药师建议携带；不要因天气或运动自行调整用药。
+      </p>
+    </aside>
   </div>
 
   <div class="forecast-section" id="forecast-panel" hidden>
