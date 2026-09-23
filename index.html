@@ -371,6 +371,92 @@
     .forecast-section {
       margin-top: 25px;
     }
+    .weather-top-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.weather-top-layout .status-card {
+  height: 100%;
+}
+
+.forecast-square-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 290px;
+  padding: 24px 18px;
+  border: 3px solid var(--teal);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 82% 14%, rgba(255, 218, 112, 0.58), transparent 22%),
+    linear-gradient(145deg, #dff6f3, #ffffff);
+  color: var(--teal-dark);
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 12px 26px rgba(20, 68, 76, 0.13);
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.forecast-square-button:hover,
+.forecast-square-button:focus-visible {
+  background:
+    radial-gradient(circle at 82% 14%, rgba(255, 218, 112, 0.72), transparent 22%),
+    linear-gradient(145deg, #cdeee9, #ffffff);
+  transform: translateY(-2px);
+  outline: 4px solid rgba(15, 102, 115, 0.22);
+  outline-offset: 3px;
+}
+
+.forecast-square-icon {
+  display: grid;
+  place-items: center;
+  width: 86px;
+  height: 86px;
+  margin-bottom: 12px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: inset 0 0 0 2px rgba(15, 102, 115, 0.12);
+  font-size: 53px;
+  line-height: 1;
+}
+
+.forecast-square-title {
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 1.25;
+}
+
+.forecast-square-note {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.forecast-square-arrow {
+  margin-top: 9px;
+  font-size: 38px;
+  line-height: 0.8;
+  transition: transform 0.2s ease;
+}
+
+.forecast-square-button[aria-expanded="true"] .forecast-square-arrow {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 760px) {
+  .weather-top-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .forecast-square-button {
+    min-height: 190px;
+  }
+}
 .forecast-toggle {
   display: flex;
   align-items: center;
@@ -1065,114 +1151,89 @@
   </header>
 
   <main>
-    <section id="today">
-      <div class="section-header">
-        <h2>天气与活动参考</h2>
-        <p class="section-subtitle">参考区域：北京西城区附近</p>
-      </div>
+   <section id="today">
+  <div class="section-header">
+    <h2>天气与活动参考</h2>
+    <p class="section-subtitle">参考区域：北京西城区附近</p>
+  </div>
 
-      <div class="status-card card">
-        <div class="status-icon" id="weather-icon" aria-hidden="true">⏳</div>
+  <div class="weather-top-layout">
+    <div class="status-card card">
+      <div class="status-icon" id="weather-icon" aria-hidden="true">⏳</div>
 
-        <div>
-          <div class="eyebrow">北京西城区附近 · 自动天气参考</div>
-          <h3 id="weather-status" aria-live="polite">正在读取天气信息……</h3>
+      <div>
+        <div class="eyebrow">北京西城区附近 · 自动天气参考</div>
+        <h3 id="weather-status" aria-live="polite">正在读取天气信息……</h3>
 
-          <p id="weather-advice" aria-live="polite">
-            请等待几秒钟。出门前也建议核对官方天气与空气质量信息。
-          </p>
+        <p id="weather-advice" aria-live="polite">
+          请等待几秒钟。出门前也建议核对官方天气与空气质量信息。
+        </p>
 
-          <p class="mini-note weather-details" id="weather-details" aria-live="polite">
-            数据加载中……
-          </p>
+        <p class="mini-note weather-details" id="weather-details" aria-live="polite">
+          数据加载中……
+        </p>
 
-          <div class="official-links">
-            <a class="official-button"
-               href="https://www.weather.com.cn/weather/101010100.shtml"
-               target="_blank"
-               rel="noopener noreferrer">
-              ☁️ 查看北京官方天气预报
-            </a>
+        <div class="official-links">
+          <a class="official-button"
+             href="https://www.weather.com.cn/weather/101010100.shtml"
+             target="_blank"
+             rel="noopener noreferrer">
+            ☁️ 查看北京官方天气预报
+          </a>
 
-            <a class="official-button air"
-               href="https://air.cnemc.cn:18007/?zbb=true"
-               target="_blank"
-               rel="noopener noreferrer">
-              🌿 查看北京官方空气质量
-            </a>
-          </div>
-
-          <p class="official-note">
-            自动天气与穿衣建议仅作活动参考；出门前请以官方发布、个人身体状况和现场情况为准。
-          </p>
+          <a class="official-button air"
+             href="https://air.cnemc.cn:18007/?zbb=true"
+             target="_blank"
+             rel="noopener noreferrer">
+            🌿 查看北京官方空气质量
+          </a>
         </div>
+
+        <p class="official-note">
+          自动天气与穿衣建议仅作活动参考；出门前请以官方发布、个人身体状况和现场情况为准。
+        </p>
       </div>
-
-      <div class="daily-summary-grid">
-        <article class="summary-card today-data">
-          <h3><span class="summary-icon">🌡️</span>今天概览</h3>
-          <p id="today-overview">正在读取今日气温、降水和风速……</p>
-        </article>
-
-        <article class="summary-card clothing">
-          <h3><span class="summary-icon">🧥</span>穿衣参考</h3>
-          <p id="clothing-advice">正在根据天气生成穿衣建议……</p>
-        </article>
-
-        <article class="summary-card activity">
-          <h3><span class="summary-icon">🕺</span>活动小建议</h3>
-          <p id="activity-advice">正在根据天气生成活动建议……</p>
-        </article>
-      </div>
-
-    <div class="forecast-section">
-  <button
-  class="forecast-toggle"
-  id="forecast-toggle"
-  type="button"
-  aria-expanded="false"
->
-  <span class="forecast-toggle-text">
-    <span class="forecast-logo" aria-hidden="true">📅</span>
-    点击查看未来三天天气
-  </span>
-
-  <span id="forecast-arrow" aria-hidden="true">⌄</span>
-</button>
-
-  <div
-    class="secondary-panel"
-    id="forecast-panel"
-    hidden
-  >
-    <h3 class="forecast-title">未来三天天气参考</h3>
-
-    <p class="forecast-intro">
-      点击下方日期，可查看明天、后天和第三天的天气、气温、降水与风速参考。
-    </p>
-
-    <div
-      class="forecast-date-tabs"
-      id="forecast-date-tabs"
-      role="tablist"
-      aria-label="未来天气日期选择"
-    >
-      <!-- JavaScript 读取天气数据后自动生成“明天、后天、第三天”按钮 -->
     </div>
 
-    <div
-      class="forecast-grid"
-      id="forecast-grid"
-      aria-live="polite"
+    <button
+      class="forecast-square-button"
+      id="forecast-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="forecast-panel"
     >
+      <span class="forecast-square-icon" aria-hidden="true">🌦️</span>
+      <span class="forecast-square-title">未来三天</span>
+      <span class="forecast-square-note" id="forecast-button-note">点击查看预报</span>
+      <span class="forecast-square-arrow" id="forecast-arrow" aria-hidden="true">⌄</span>
+    </button>
+  </div>
+
+  <div class="daily-summary-grid">
+    <article class="summary-card today-data">
+      <h3><span class="summary-icon">🌡️</span>今天概览</h3>
+      <p id="today-overview">正在读取今日气温、降水和风速……</p>
+    </article>
+
+    <article class="summary-card clothing">
+      <h3><span class="summary-icon">🧥</span>穿衣参考</h3>
+      <p id="clothing-advice">正在根据天气生成穿衣建议……</p>
+    </article>
+
+    <article class="summary-card activity">
+      <h3><span class="summary-icon">🕺</span>活动小建议</h3>
+      <p id="activity-advice">正在根据天气生成活动建议……</p>
+    </article>
+  </div>
+
+  <div class="forecast-section" id="forecast-panel" hidden>
+    <h3 class="forecast-title">未来三天天气参考</h3>
+
+    <div class="forecast-grid" id="forecast-grid" aria-live="polite">
       <div class="forecast-empty">正在读取未来三天天气预测……</div>
     </div>
   </div>
-</div>
-
-    </section>
-
-    
+</section>
     <section id="health">
       <div class="section-header">
         <h2>不同人群的小建议</h2>
@@ -1866,6 +1927,7 @@ loadWeatherAndAir();
 const forecastToggle = document.getElementById("forecast-toggle");
 const forecastPanel = document.getElementById("forecast-panel");
 const forecastArrow = document.getElementById("forecast-arrow");
+const forecastButtonNote = document.getElementById("forecast-button-note");
 
 if (forecastToggle && forecastPanel && forecastArrow) {
   forecastToggle.addEventListener("click", function() {
@@ -1875,6 +1937,21 @@ if (forecastToggle && forecastPanel && forecastArrow) {
     forecastToggle.setAttribute("aria-expanded", String(!isOpen));
     forecastPanel.hidden = isOpen;
     forecastArrow.textContent = isOpen ? "⌄" : "⌃";
+
+    if (forecastButtonNote) {
+      forecastButtonNote.textContent = isOpen
+        ? "点击查看预报"
+        : "点击收起预报";
+    }
+
+    if (!isOpen) {
+      setTimeout(function() {
+        forecastPanel.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest"
+        });
+      }, 100);
+    }
   });
 }
 </script>
