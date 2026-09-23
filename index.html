@@ -1881,18 +1881,22 @@
     }
 
     initializeTextToggle();
-    loadWeatherAndAir();
- const forecastToggle = document.getElementById("");
+loadWeatherAndAir();
+
+const forecastToggle = document.getElementById("forecast-toggle");
 const forecastPanel = document.getElementById("forecast-panel");
 const forecastArrow = document.getElementById("forecast-arrow");
 
-forecastToggle.addEventListener("click", function() {
-  const isOpen = forecastToggle.getAttribute("aria-expanded") === "true";
+if (forecastToggle && forecastPanel && forecastArrow) {
+  forecastToggle.addEventListener("click", function() {
+    const isOpen =
+      forecastToggle.getAttribute("aria-expanded") === "true";
 
-  forecastToggle.setAttribute("aria-expanded", String(!isOpen));
-  forecastPanel.hidden = isOpen;
-  forecastArrow.textContent = isOpen ? "⌄" : "⌃";
-});
-  </script>
+    forecastToggle.setAttribute("aria-expanded", String(!isOpen));
+    forecastPanel.hidden = isOpen;
+    forecastArrow.textContent = isOpen ? "⌄" : "⌃";
+  });
+}
+</script>
 </body>
 </html>
