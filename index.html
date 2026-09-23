@@ -258,7 +258,130 @@
       font-size: clamp(25px, 3.5vw, 34px);
       line-height: 1.3;
     }
+.risk-light {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 13px 0 14px;
+  padding: 13px 15px;
+  border: 1px solid #ead9a5;
+  border-radius: 16px;
+  background: #fff9e6;
+}
 
+.risk-light-dot {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #d09c00;
+  color: white;
+  font-size: 18px;
+  line-height: 1;
+  box-shadow: 0 2px 7px rgba(112, 73, 0, 0.18);
+}
+
+.risk-light-title {
+  color: #755000;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.35;
+}
+
+.risk-light-message {
+  margin-top: 3px;
+  color: #6c6047;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* 绿色：相对适合 */
+.risk-light.risk-green {
+  border-color: #b9dfc1;
+  background: #eff9ef;
+}
+
+.risk-light.risk-green .risk-light-dot {
+  background: #3f9255;
+}
+
+.risk-light.risk-green .risk-light-title {
+  color: #2d6740;
+}
+
+.risk-light.risk-green .risk-light-message {
+  color: #4d6e56;
+}
+
+/* 黄色：谨慎活动 */
+.risk-light.risk-yellow {
+  border-color: #ead9a5;
+  background: #fff9e6;
+}
+
+.risk-light.risk-yellow .risk-light-dot {
+  background: #d09c00;
+}
+
+.risk-light.risk-yellow .risk-light-title {
+  color: #755000;
+}
+
+.risk-light.risk-yellow .risk-light-message {
+  color: #6c6047;
+}
+
+/* 橙色：优先室内或阴凉处 */
+.risk-light.risk-orange {
+  border-color: #f0c49d;
+  background: #fff3e9;
+}
+
+.risk-light.risk-orange .risk-light-dot {
+  background: #d66a2c;
+}
+
+.risk-light.risk-orange .risk-light-title {
+  color: #914615;
+}
+
+.risk-light.risk-orange .risk-light-message {
+  color: #7a573e;
+}
+
+/* 红色：不建议户外 */
+.risk-light.risk-red {
+  border-color: #eab6b6;
+  background: #fff0f0;
+}
+
+.risk-light.risk-red .risk-light-dot {
+  background: #bd4141;
+}
+
+.risk-light.risk-red .risk-light-title {
+  color: #8e3131;
+}
+
+.risk-light.risk-red .risk-light-message {
+  color: #7d4c4c;
+}
+
+@media (max-width: 760px) {
+  .risk-light {
+    padding: 12px;
+  }
+
+  .risk-light-title {
+    font-size: 17px;
+  }
+
+  .risk-light-message {
+    font-size: 15px;
+  }
+}
     .status-card p {
       margin: 0;
     }
@@ -1405,7 +1528,25 @@
         <h3 id="weather-status" aria-live="polite">
           正在读取天气信息……
         </h3>
+        
+<div
+  class="risk-light"
+  id="risk-light"
+  role="status"
+  aria-live="polite"
+>
+  <span class="risk-light-dot" id="risk-light-dot" aria-hidden="true">●</span>
 
+  <div>
+    <div class="risk-light-title" id="risk-light-title">
+      今日活动风险：读取中……
+    </div>
+
+    <div class="risk-light-message" id="risk-light-message">
+      正在结合天气、风速、降水和空气情况生成活动参考。
+    </div>
+  </div>
+</div>
         <p id="weather-advice" aria-live="polite">
           请等待几秒钟。出门前也建议核对官方天气与空气质量信息。
         </p>
@@ -1979,7 +2120,67 @@
 
       return "可考虑低至中等强度活动；先热身，带水，身体不适时及时休息。";
     }
+function getActivityRiskLevel(usAqi, temperature, precipitation, windSpeed) {
+  if (
+    temperature === null ||
+    precipitation === null ||
+    windSpeed === null
+  ) {
+    return {
+      level: "yellow",
+      title: "今日活动风险：⚠️ 信息暂不完整",
+      message: "请查看官方天气和空气质量信息后，再决定是否进行户外活动。"
+    };
+  }
 
+  if (
+    (usAqi !== null && usAqi > 150) ||
+    temperature >= 35 ||
+    temperature <= -8 ||
+    precipitation >= 8 ||
+    windSpeed >= 40
+  ) {
+    return {
+      level: "red",
+      title: "今日活动风险：🔴 红色 · 不建议户外集体活动",
+      message: "天气、空气或路面风险较高。建议暂停户外广场舞，改为室内休息、轻度拉伸或坐姿活动。"
+    };
+  }
+
+  if (
+    (usAqi !== null && usAqi > 120) ||
+    temperature >= 32 ||
+    temperature <= 0 ||
+    precipitation >= 3 ||
+    windSpeed >= 30
+  ) {
+    return {
+      level: "orange",
+      title: "今日活动风险：🟠 橙色 · 建议室内或阴凉处活动",
+      message: "建议避免长时间户外跳舞；可选择社区室内空间、阴凉处轻活动，或缩短活动并降低强度。"
+    };
+  }
+
+  if (
+    (usAqi !== null && usAqi > 80) ||
+    temperature >= 28 ||
+    temperature <= 8 ||
+    precipitation > 0 ||
+    windSpeed >= 20
+  ) {
+    return {
+      level: "yellow",
+      title: "今日活动风险：🟡 黄色 · 谨慎活动",
+      message: "建议缩短活动时间、降低强度，避开正午或风大时段；选择有树荫、座椅且地面平整的地点。"
+    };
+  }
+
+  return {
+    level: "green",
+    title: "今日活动风险：🟢 绿色 · 相对适合轻度活动",
+    message: "天气条件相对平稳。可进行低至中等强度活动；请先热身、带水，并随时根据身体感受休息。"
+  };
+}
     async function fetchJson(url, label) {
       let response;
 
@@ -2068,7 +2269,12 @@
       const todayOverview = document.getElementById("today-overview");
       const clothingAdvice = document.getElementById("clothing-advice");
       const activityAdvice = document.getElementById("activity-advice");
-
+      
+const riskLight = document.getElementById("risk-light");
+const riskLightDot = document.getElementById("risk-light-dot");
+const riskLightTitle = document.getElementById("risk-light-title");
+const riskLightMessage = document.getElementById("risk-light-message");
+      
       const weatherUrl =
         "https://api.open-meteo.com/v1/forecast?" +
         "latitude=" + LATITUDE +
@@ -2138,7 +2344,19 @@
         precipitation,
         windSpeed
       );
+const activityRisk = getActivityRiskLevel(
+  usAqi,
+  temperature,
+  precipitation,
+  windSpeed
+);
 
+if (riskLight && riskLightDot && riskLightTitle && riskLightMessage) {
+  riskLight.className = "risk-light risk-" + activityRisk.level;
+  riskLightDot.textContent = "●";
+  riskLightTitle.textContent = activityRisk.title;
+  riskLightMessage.textContent = activityRisk.message;
+}
       icon.textContent = weather ? currentWeather.icon : suggestion.icon;
       status.textContent = suggestion.title;
       advice.textContent = suggestion.message;
