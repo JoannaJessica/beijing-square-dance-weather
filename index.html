@@ -388,7 +388,24 @@
   text-align: left;
   box-shadow: 0 7px 18px rgba(20, 68, 76, 0.08);
 }
+.forecast-toggle-text {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
+.forecast-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  border-radius: 14px;
+  background: #ccece8;
+  font-size: 29px;
+  line-height: 1;
+}
 .forecast-toggle:hover,
 .forecast-toggle:focus-visible {
   background: #d7f0ed;
@@ -1110,15 +1127,18 @@
 
     <div class="forecast-section">
   <button
-    class="secondary-toggle"
-    id="forecast-toggle"
-    type="button"
-    aria-expanded="false"
-    aria-controls="forecast-panel"
-  >
-    <span>📅 查看未来三天天气</span>
-    <span class="toggle-arrow" aria-hidden="true">⌄</span>
-  </button>
+  class="forecast-toggle"
+  id="forecast-toggle"
+  type="button"
+  aria-expanded="false"
+>
+  <span class="forecast-toggle-text">
+    <span class="forecast-logo" aria-hidden="true">📅</span>
+    点击查看未来三天天气
+  </span>
+
+  <span id="forecast-arrow" aria-hidden="true">⌄</span>
+</button>
 
   <div
     class="secondary-panel"
@@ -1862,7 +1882,7 @@
 
     initializeTextToggle();
     loadWeatherAndAir();
- const forecastToggle = document.getElementById("forecast-toggle");
+ const forecastToggle = document.getElementById("");
 const forecastPanel = document.getElementById("forecast-panel");
 const forecastArrow = document.getElementById("forecast-arrow");
 
