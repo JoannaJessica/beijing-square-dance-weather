@@ -1067,13 +1067,47 @@
         </article>
       </div>
 
-      <div class="forecast-section">
-        <h3 class="forecast-title">未来三天天气参考</h3>
+    <div class="forecast-section">
+  <button
+    class="secondary-toggle"
+    id="forecast-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="forecast-panel"
+  >
+    <span>📅 查看未来三天天气</span>
+    <span class="toggle-arrow" aria-hidden="true">⌄</span>
+  </button>
 
-        <div class="forecast-grid" id="forecast-grid" aria-live="polite">
-          <div class="forecast-empty">正在读取未来三天天气预测……</div>
-        </div>
-      </div>
+  <div
+    class="secondary-panel"
+    id="forecast-panel"
+    hidden
+  >
+    <h3 class="forecast-title">未来三天天气参考</h3>
+
+    <p class="forecast-intro">
+      点击下方日期，可查看明天、后天和第三天的天气、气温、降水与风速参考。
+    </p>
+
+    <div
+      class="forecast-date-tabs"
+      id="forecast-date-tabs"
+      role="tablist"
+      aria-label="未来天气日期选择"
+    >
+      <!-- JavaScript 读取天气数据后自动生成“明天、后天、第三天”按钮 -->
+    </div>
+
+    <div
+      class="forecast-grid"
+      id="forecast-grid"
+      aria-live="polite"
+    >
+      <div class="forecast-empty">正在读取未来三天天气预测……</div>
+    </div>
+  </div>
+</div>
 
       <div class="steps">
         <article class="step">
